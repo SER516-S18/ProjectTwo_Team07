@@ -21,3 +21,19 @@
 * Shipra Panwar - 85
 * Suman Parlapalli - 86
 * Tejasi Palkar - 83
+
+## How to Build Project
+
+    mvn clean package
+
+If you don't have maven installed, install it [here](https://maven.apache.org/install.html)
+
+## Run Server
+
+    java -jar Server/target/Server-1.0-SNAPSHOT-jar-with-dependencies.jar
+
+## Run Client
+
+    java -jar Client/target/Client-1.0-SNAPSHOT-jar-with-dependencies.jar
+
+
