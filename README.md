@@ -1,6 +1,6 @@
 # SER-516, Spring 2018 (ASU) : Lab 2 - Team 007
 
-## Random Signal Generator (Cleint + Server) Implementation in Java
+## Random Signal Generator (Client + Server) Implementation in Java
 
 ### Project Workspace 
 
