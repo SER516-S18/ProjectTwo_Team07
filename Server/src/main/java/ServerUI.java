@@ -1,6 +1,6 @@
 import java.awt.Color;
 import java.awt.Dimension;
-
+import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.Box.Filler;
 import javax.swing.GroupLayout;
@@ -71,9 +71,9 @@ public class ServerUI extends javax.swing.JFrame {
         setDefaultCloseOperation(jFrame1.EXIT_ON_CLOSE);
         setTitle("SERVER");
         setAlwaysOnTop(true);
-        setBackground(new java.awt.Color(204, 245, 255));
-        setForeground(new java.awt.Color(210, 246, 255)); 
-        setPreferredSize(new java.awt.Dimension(800, 750));
+        setBackground(new Color(204, 245, 255));
+        setForeground(new Color(210, 246, 255)); 
+        setPreferredSize(new Dimension(800, 750));
         setResizable(false);
         
         /*
@@ -87,9 +87,9 @@ public class ServerUI extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new Dimension(750, 550));
 
         jButton1.setBackground(new Color(255, 204, 204));
-        jButton1.setFont(new java.awt.Font("Courier New", 0, 18)); 
+        jButton1.setFont(new Font("Courier New", 0, 18)); 
         jButton1.setText("Start/Stop");
-        jButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 255)));
+        jButton1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(153, 153, 255)));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -128,10 +128,10 @@ public class ServerUI extends javax.swing.JFrame {
          * Panel 6 for holding Highest value label
          */
 
-        jPanel6.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel6.setBackground(new Color(204, 255, 255));
         jPanel6.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(153, 153, 255)));
 
-        jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); 
+        jLabel1.setFont(new Font("Courier New", 0, 18)); 
         jLabel1.setText("Highest value");
 
         GroupLayout jPanel6Layout = new GroupLayout(jPanel6);
@@ -157,7 +157,7 @@ public class ServerUI extends javax.swing.JFrame {
         jPanel7.setBackground(new Color(255, 204, 204));
         jPanel7.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(153, 153, 255)));
 
-        jLabel2.setFont(new java.awt.Font("Courier New", 0, 18)); 
+        jLabel2.setFont(new Font("Courier New", 0, 18)); 
         jLabel2.setText("Lowest Value");
 
         GroupLayout jPanel7Layout = new GroupLayout(jPanel7);
@@ -181,10 +181,10 @@ public class ServerUI extends javax.swing.JFrame {
          * 
          */
         
-        jPanel8.setBackground(new java.awt.Color(204, 255, 255));
-        jPanel8.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 255)));
+        jPanel8.setBackground(new Color(204, 255, 255));
+        jPanel8.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 255)));
 
-        jLabel3.setFont(new java.awt.Font("Courier New", 0, 18)); 
+        jLabel3.setFont(new Font("Courier New", 0, 18)); 
         jLabel3.setText("Frequency(Hz)");
 
         GroupLayout jPanel8Layout = new GroupLayout(jPanel8);
@@ -194,8 +194,7 @@ public class ServerUI extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap(Gro
-                                 upLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -208,10 +207,10 @@ public class ServerUI extends javax.swing.JFrame {
          * Panel 9 for holding Highest value 
             JLabel5 is the label value-1024
          */
-        jPanel9.setBackground(new java.awt.Color(255, 204, 204));
-        jPanel9.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 255)));
+        jPanel9.setBackground(new Color(255, 204, 204));
+        jPanel9.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 255)));
 
-        jLabel5.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jLabel5.setFont(new Font("Courier New", 0, 18)); // NOI18N
         jLabel5.setText("1024");
 
         GroupLayout jPanel9Layout = new GroupLayout(jPanel9);
@@ -235,10 +234,10 @@ public class ServerUI extends javax.swing.JFrame {
          * 
          */
 
-        jPanel10.setBackground(new java.awt.Color(204, 255, 255));
-        jPanel10.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 255)));
+        jPanel10.setBackground(new Color(204, 255, 255));
+        jPanel10.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 255)));
 
-        jLabel7.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jLabel7.setFont(new Font("Courier New", 0, 18)); // NOI18N
         jLabel7.setText(" 0");
 
         GroupLayout jPanel10Layout = new GroupLayout(jPanel10);
@@ -261,8 +260,8 @@ public class ServerUI extends javax.swing.JFrame {
          * Textbox 2 for entering frequency,by default set to 5
          * 
          */
-        jTextField2.setBackground(new java.awt.Color(255, 204, 204));
-        jTextField2.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jTextField2.setBackground(new Color(255, 204, 204));
+        jTextField2.setFont(new Font("Courier New", 0, 18)); // NOI18N
         jTextField2.setText("5");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -316,10 +315,10 @@ public class ServerUI extends javax.swing.JFrame {
          * Panel 4 for holding Console label
          * Panel  displays success and error message
          */
-        jPanel4.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
+        jPanel4.setBackground(new Color(204, 204, 204));
+        jPanel4.setBorder(BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
 
-        jLabel6.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jLabel6.setFont(new Font("Courier New", 0, 18)); // NOI18N
         jLabel6.setText("Console:");
 
         GroupLayout jPanel4Layout = new GroupLayout(jPanel4);
@@ -424,7 +423,7 @@ public class ServerUI extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
     	try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     UIManager.setLookAndFeel(info.getClassName());
                     break;
