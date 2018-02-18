@@ -14,8 +14,10 @@ import javax.swing.UIManager;
 //package serverui;
 
 /**
+    Author -Tejasi Palkar
+    Version 1
  *
- * @author tpalk
+ * This class creates a User Interface forServer 
  */
 public class ServerUI extends javax.swing.JFrame {
 
@@ -127,7 +129,7 @@ public class ServerUI extends javax.swing.JFrame {
          */
 
         jPanel6.setBackground(new java.awt.Color(204, 255, 255));
-        jPanel6.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 255)));
+        jPanel6.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(153, 153, 255)));
 
         jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); 
         jLabel1.setText("Highest value");
@@ -192,7 +194,8 @@ public class ServerUI extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(Gro
+                                 upLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -202,7 +205,8 @@ public class ServerUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
         /*
-         * Panel 9 for holding Highest value label value-1024
+         * Panel 9 for holding Highest value 
+            JLabel5 is the label value-1024
          */
         jPanel9.setBackground(new java.awt.Color(255, 204, 204));
         jPanel9.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 255)));
