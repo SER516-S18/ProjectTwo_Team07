@@ -12,12 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 //package serverui;
-
-/**
- *
- * @author tpalk
- */
-public class ServerUI extends javax.swing.JFrame {
+public class ServerUI extends JFrame {
 
     /**
      * Creates new form ServerUI
