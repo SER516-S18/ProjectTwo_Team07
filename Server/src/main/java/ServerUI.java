@@ -5,6 +5,8 @@ import javax.swing.*;
  */
 public class ServerUI extends JFrame {
 
+    private boolean serverActiveFlag;
+
     /**
      * Creates new form ServerUI
      */
@@ -36,6 +38,8 @@ public class ServerUI extends JFrame {
         frequencyLbl = new JLabel();
         frequencyTxt = new JTextField();
         startStopBtn = new JButton();
+
+        serverActiveFlag = false;
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -178,6 +182,11 @@ public class ServerUI extends JFrame {
         );
 
         startStopBtn.setText("Start");
+        startStopBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startStopBtnClick(evt);
+            }
+        });
 
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -209,7 +218,28 @@ public class ServerUI extends JFrame {
         );
 
         pack();
-    }// </editor-fold>                        
+    }
+
+    private void startStopBtnClick(java.awt.event.ActionEvent evt){
+        if(!serverActiveFlag){
+            serverActiveFlag = true;
+            try{
+                ServerMain.startServer();
+            }catch (Exception e){
+                ServerConsole.setErrorMessage(e.getMessage());
+            }
+            ServerStatus.startBlinking();
+            ServerConsole.setMessage("Starting server...");
+            startStopBtn.setText("Stop");
+        }
+        else{
+            serverActiveFlag = false;
+            ServerStatus.stopBlinking();
+            ServerConsole.setMessage("Stopping server...");
+            ServerMain.stopServer();
+            startStopBtn.setText("Start");
+        }
+    }// </editor-fold>
 
     /**
      * @param args the command line arguments

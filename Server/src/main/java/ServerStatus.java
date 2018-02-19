@@ -2,11 +2,11 @@ public class ServerStatus {
 
     public ServerStatus(){}
 
-    public void startBlinking(){
+    public static void startBlinking(){
         // TODO add your handling code here:
     }
 
-    public void stopBlinking(){
+    public static void stopBlinking(){
         // TODO add your handling code here:
     }
 }

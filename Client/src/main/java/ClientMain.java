@@ -18,6 +18,9 @@ public class ClientMain {
     private static final int TIMEOUT = 5000;
     private static final String HOST = "localhost";
     private static final int TCP_PORT = 8080;
+    private static Client client;
+
+    static boolean messageReceived = false;
 
     public static void main(String[] args) throws IOException {
         // startClient();
@@ -26,10 +29,16 @@ public class ClientMain {
     // client will disconnect unless thread keeps running
     // when the UI code is implemented, the client listener will keep its connection
     // to test, uncomment for(;;); to keep the thread alive
-    public static void startClient() throws IOException {
-        Client client = new Client();
+    public static boolean startClient() throws IOException {
+        client = new Client();
         client.start();
-        client.connect(TIMEOUT, HOST, TCP_PORT);
+
+        try {
+            client.connect(TIMEOUT, HOST, TCP_PORT);
+        }catch(Exception e){
+            System.out.println(e.getStackTrace());
+            return false;
+        }
 
         Register.register(client);
 
@@ -50,5 +59,11 @@ public class ClientMain {
         });
 
         // for(;;);
+        return true;
+    }
+
+    public static void stopClient(){
+        client.close();
+        client.stop();
     }
 }

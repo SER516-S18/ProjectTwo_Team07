@@ -16,13 +16,14 @@ import java.io.IOException;
 public class ServerMain {
 
     private static final int TCP_PORT = 8080;
+    static Server server;
 
-    public static void main(String[] args) throws IOException {
+    /*public static void main(String[] args) throws IOException {
         // startServer();
-    }
+    }*/
 
     public static void startServer() throws IOException {
-        Server server = new Server();
+        server = new Server();
         server.start();
         server.bind(TCP_PORT);
 
@@ -42,5 +43,10 @@ public class ServerMain {
                 }
             }
         });
+    }
+
+    public static void stopServer(){
+        server.close();
+        server.stop();
     }
 }

@@ -22,6 +22,7 @@ import javax.swing.text.StyleConstants;
  */
 public class ClientUI extends javax.swing.JFrame {
 
+    private boolean clientActiveFlag;
     /**
      * Creates new form ServerUI
      */
@@ -64,6 +65,7 @@ public class ClientUI extends javax.swing.JFrame {
         consoleText = new JTextPane();
         consoleScroller = new JScrollPane(consoleText);
 
+        clientActiveFlag = false;
 
         /*
          * Design frame with required dimensions and specification
@@ -99,12 +101,12 @@ public class ClientUI extends javax.swing.JFrame {
 
         setStatusButton.setBackground(new Color(255, 204, 204));
         setStatusButton.setFont(new java.awt.Font("Courier New", 0, 18));
-        setStatusButton.setText("Start/Stop");
+        setStatusButton.setText("Start");
         setStatusButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1,
                 new java.awt.Color(153, 153, 255)));
         setStatusButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                setStatusButtonClick(evt);
             }
         });
 
@@ -541,8 +543,30 @@ public class ClientUI extends javax.swing.JFrame {
         pack();
         
     }
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+    private void setStatusButtonClick(java.awt.event.ActionEvent evt) {
+        if(!clientActiveFlag){
+            try{
+                if(ClientMain.startClient()){
+                    clientActiveFlag = true;
+                    ClientGraphPlotter.startGraphPlotting();
+                    ClientConsole.setMessage("Starting client...");
+                    setStatusButton.setText("Stop");
+                }
+                else{
+                    ClientConsole.setMessage("Server not connected. Cannot start client..");
+                }
+            }catch (Exception e){
+                ClientConsole.setErrorMessage(e.getMessage());
+            }
+
+        }
+        else{
+            clientActiveFlag = false;
+            ClientGraphPlotter.stopGraphPlotting();
+            ClientConsole.setMessage("Stopping client...");
+            ClientMain.stopClient();
+            setStatusButton.setText("Start");
+        }
     }
 
 
