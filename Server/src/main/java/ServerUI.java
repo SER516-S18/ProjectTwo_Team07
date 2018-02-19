@@ -1,3 +1,4 @@
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -11,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
-//package serverui;
+
 
 /**
     Author -Tejasi Palkar
@@ -20,6 +21,12 @@ import javax.swing.UIManager;
  * This class creates a User Interface forServer 
  */
 public class ServerUI extends javax.swing.JFrame {
+
+    private ServerMain serverMainObj;
+    private boolean activeFlag;
+    private ServerConsole serverConsoleObj;
+    private ServerStatus serverStatusObj;
+
 
     /**
      * Creates new form ServerUI
@@ -54,6 +61,12 @@ public class ServerUI extends javax.swing.JFrame {
         jLabel6 = new JLabel();
         jPanel2 = new JPanel();
         jLabel4 = new JLabel();
+
+        serverMainObj = new ServerMain();
+        serverConsoleObj = new ServerConsole();
+        serverStatusObj = new ServerStatus();
+        activeFlag = false;
+
         /*
          * Design frame with required dimensions and specification
          */
@@ -410,8 +423,24 @@ public class ServerUI extends javax.swing.JFrame {
 
         pack();
     }
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        if(!activeFlag){
+            activeFlag = true;
+            try{
+                serverMainObj.startServer();
+            }catch (Exception e){
+               System.out.println(e.getStackTrace());
+                serverConsoleObj.setErrorMessage(e.getMessage());
+            }
+            serverStatusObj.startBlinking();
+            serverConsoleObj.setMessage("Starting server...");
+        }
+        else{
+            activeFlag = false;
+            //TODO function to stop server connection, need a function for the same
+            serverStatusObj.stopBlinking();
+            serverConsoleObj.setMessage("Stopping server...");
+        }
     }                                        
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {                                            
