@@ -8,7 +8,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
 import javax.swing.UIManager;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
 
 //package clientui;
 
@@ -53,10 +57,12 @@ public class ClientUI extends javax.swing.JFrame {
         averageLabel = new JLabel();
         averageValuePanel = new JPanel();
         averageValueLabel = new JLabel();
-        jPanel4 = new JPanel();
-        jLabel6 = new JLabel();
+        consolePanel = new JPanel();
+        consoleLabel = new JLabel();
         jPanel2 = new JPanel();
         jLabel4 = new JLabel();
+        consoleText = new JTextPane();
+        consoleScroller = new JScrollPane(consoleText);
 
 
         /*
@@ -423,29 +429,45 @@ public class ClientUI extends javax.swing.JFrame {
          * Panel for holding Console label
          * Panel  displays success and error message
          */
-        jPanel4.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
+        consolePanel.setBackground(new java.awt.Color(204, 204, 204));
+        consolePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
 
-        jLabel6.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
-        jLabel6.setText("Console:");
-
-        GroupLayout jPanel4Layout = new GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-                jPanel4Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
+        consoleLabel.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        consoleLabel.setText("Console:");
+        
+        consoleText.setEditable(false);
+        consoleText.setContentType("text/html");
+        Color backgroundColor = new Color(204, 204, 204);
+        SimpleAttributeSet background = new SimpleAttributeSet();
+        StyleConstants.setBackground(background, backgroundColor);
+        consoleText.getStyledDocument().setParagraphAttributes(0, 
+        	consoleText.getDocument().getLength(), background, false);
+        consoleText.setBorder(BorderFactory.createEmptyBorder());
+     
+        consoleScroller.setBorder(BorderFactory.createEmptyBorder());
+        consoleScroller.setPreferredSize(new Dimension(40, 80));
+        
+        GroupLayout consolePanelLayout = new GroupLayout(consolePanel);
+        consolePanel.setLayout(consolePanelLayout);
+        consolePanelLayout.setHorizontalGroup(
+                consolePanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(consolePanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel6)
+                                .addComponent(consoleLabel)
                                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(consolePanelLayout.createSequentialGroup()
+                        		.addContainerGap()
+                        		.addComponent(consoleScroller))
         );
-        jPanel4Layout.setVerticalGroup(
-                jPanel4Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
+        consolePanelLayout.setVerticalGroup(
+                consolePanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(consolePanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel6)
+                                .addComponent(consoleLabel)
+                                .addComponent(consoleScroller)
                                 .addContainerGap(88, Short.MAX_VALUE))
         );
-
+        
         GroupLayout jPanel1Layout = new GroupLayout(OuterPanel);
         OuterPanel.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -453,7 +475,7 @@ public class ClientUI extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jPanel4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(consolePanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                                 .addGap(644, 644, 644)
                                                 .addComponent(setStatusButton, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE))
@@ -468,7 +490,7 @@ public class ClientUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(clientStatusPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jPanel4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(consolePanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
         );
 
@@ -517,6 +539,7 @@ public class ClientUI extends javax.swing.JFrame {
         );
 
         pack();
+        
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
@@ -552,6 +575,10 @@ public class ClientUI extends javax.swing.JFrame {
             }
         });
     }
+    
+    public static JTextPane getConsoleTextArea() {
+    		return consoleText;
+    }
 
     // Variables declaration
     private Filler Filler;
@@ -562,24 +589,26 @@ public class ClientUI extends javax.swing.JFrame {
     private JLabel frequencyLabel;
     private JLabel jLabel4;
     private JLabel showHighestValueLabel;
-    private JLabel jLabel6;
+    private JLabel consoleLabel;
     private JLabel showLowestValueLabel;
+    private JLabel frequencyValueLabel;
+    private JLabel averageLabel;
+    private JLabel averageValueLabel;
     private JPanel OuterPanel;
     private JPanel showLowestValuePanel;
     private JPanel jPanel2;
     private JPanel clientStatusPanel;
-    private JPanel jPanel4;
+    private JPanel consolePanel;
     private JPanel graphPlottingPanel;
     private JPanel highestValuePanel;
     private JPanel lowestValuePanel;
     private JPanel frequencyPanel;
     private JPanel showHighestValuePanel;
     private JPanel frequencyValuePanel;
-    private JLabel frequencyValueLabel;
     private JPanel averagePanel;
-    private JLabel averageLabel;
     private JPanel averageValuePanel;
-    private JLabel averageValueLabel;
+    private static JTextPane consoleText;
+    private JScrollPane consoleScroller;
     // End of variables declaration
 }
 
