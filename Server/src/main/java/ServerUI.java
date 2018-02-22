@@ -261,7 +261,6 @@ public class ServerUI extends JFrame {
         } catch (UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ServerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -271,7 +270,7 @@ public class ServerUI extends JFrame {
         });
     }
 
-    // Variables declaration - do not modify                     
+    // Variables declaration               
     private JLabel consoleLbl;
     private JPanel consolePanel;
     private JScrollPane consoleScrollPane;
