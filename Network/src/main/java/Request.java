@@ -7,21 +7,18 @@
  * @version 1.0
  */
 public class Request {
-    private String text;
 
-    public Request(String text) {
-        this.text = text;
+    private int numChannels;
+
+    public Request(int numChannels) {
+        this.numChannels = numChannels;
     }
 
-    public Request() {
-        this.text = "";
+    public int getNumChannels() {
+        return numChannels;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
+    public void setNumChannels(int numChannels) {
+        this.numChannels = numChannels;
     }
 }

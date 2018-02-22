@@ -7,21 +7,17 @@
  * @version 1.0
  */
 public class Response {
-    private String text;
+    private int[] channelNumbers;
 
-    public Response(String text) {
-        this.text = text;
+    public Response(int[] channelNumbers) {
+        this.channelNumbers = channelNumbers;
     }
 
-    public Response() {
-        this.text = "";
+    public int[] getChannelNumbers() {
+        return channelNumbers;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
+    public void setChannelNumbers(int[] channelNumbers) {
+        this.channelNumbers = channelNumbers;
     }
 }
