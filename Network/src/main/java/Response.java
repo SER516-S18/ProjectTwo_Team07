@@ -1,7 +1,7 @@
 /**
  * Response
  *
- * <P>Message class for a response from the server
+ * Message class for a response from the server
  *
  * @author Team 7
  * @version 1.0

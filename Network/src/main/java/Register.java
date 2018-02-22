@@ -4,7 +4,7 @@ import com.esotericsoftware.kryonet.EndPoint;
 /**
  * Register
  *
- * <P>Classes that are sent over the network are registered here
+ * Classes that are sent over the network are registered here
  *
  * @author Team 7
  * @version 1.0

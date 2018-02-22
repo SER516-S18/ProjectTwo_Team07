@@ -14,6 +14,7 @@
         <module>Client</module>
         <module>Server</module>
         <module>Network</module>
+        <module>Utils</module>
     </modules>
 
     <properties>

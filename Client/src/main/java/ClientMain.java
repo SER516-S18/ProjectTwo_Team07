@@ -7,8 +7,8 @@ import java.io.IOException;
 /**
  * Client
  *
- * <P>Client entry point.
- * <P>Starts GUI and connection to server
+ * Client entry point.
+ * Starts GUI and connection to server
  *
  * @author Team 7
  * @version 1.0

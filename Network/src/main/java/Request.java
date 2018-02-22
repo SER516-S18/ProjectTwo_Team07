@@ -1,7 +1,7 @@
 /**
  * Request
  *
- * <P>Message class for a request to the server
+ * Message class for a request to the server
  *
  * @author Team 7
  * @version 1.0
