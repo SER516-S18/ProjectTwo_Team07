@@ -30,10 +30,10 @@ If you don't have maven installed, install it [here](https://maven.apache.org/in
 
 ## Run Server
 
-    java -jar Server/target/Server-1.0-SNAPSHOT-jar-with-dependencies.jar
+    java -jar Server/target/server.jar
 
 ## Run Client
 
-    java -jar Client/target/Client-1.0-SNAPSHOT-jar-with-dependencies.jar
+    java -jar Client/target/client.jar
 
 

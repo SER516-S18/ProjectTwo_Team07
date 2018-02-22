@@ -46,7 +46,8 @@
                             <mainClass>ServerMain</mainClass>
                         </manifest>
                     </archive>
-
+                    <finalName>server</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
                 </configuration>
                 <executions>
                     <execution>

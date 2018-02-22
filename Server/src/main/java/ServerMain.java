@@ -18,9 +18,9 @@ public class ServerMain {
     private static final int TCP_PORT = 8080;
     static Server server;
 
-    /*public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         // startServer();
-    }*/
+    }
 
     public static void startServer() throws IOException {
         server = new Server();
