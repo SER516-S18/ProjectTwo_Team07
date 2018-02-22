@@ -3,6 +3,7 @@ import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 /**
  * Client
@@ -42,8 +43,7 @@ public class ClientMain {
 
         Register.register(client);
 
-        Request request = new Request();
-        request.setText("A message from the client");
+        Request request = new Request(4);
         client.sendTCP(request);
 
         boolean clientIsActive = true;
@@ -53,7 +53,7 @@ public class ClientMain {
                 if (object instanceof Response) {
                     Response response = (Response) object;
 
-                    System.out.println("A response from the server: " + response.getText());
+                    System.out.println("A response from the server: " + Arrays.toString(response.getChannelNumbers()));
                 }
             }
         });

@@ -34,10 +34,9 @@ public class ServerMain {
                 if (object instanceof Request) {
                     Request request = (Request) object;
 
-                    System.out.println("Server received the request: " + request.getText());
+                    System.out.println("Server received the request: " + request.getNumChannels());
 
-                    Response response = new Response();
-                    response.setText("A response from the server...");
+                    Response response = new Response(new int[request.getNumChannels()]);
 
                     connection.sendTCP(response);
                 }
