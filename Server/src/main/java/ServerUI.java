@@ -5,6 +5,23 @@ import javax.swing.*;
  */
 public class ServerUI extends JFrame {
 
+    // Variables declaration   
+	private static Logger Log = Logger.getLogger(ServerUI.class.getName());
+    private JLabel consoleLbl;
+    private JPanel consolePanel;
+    private JScrollPane consoleScrollPane;
+    private JTextArea consoleTxt;
+    private JPanel controlsPanel;
+    private JLabel frequencyLbl;
+    private JTextField frequencyTxt;
+    private JLabel highestValLbl;
+    private JTextField highestValTxt;
+    private JLabel lowestValLbl;
+    private JTextField lowestValTxt;
+    private JPanel plotContainerPnl;
+    private JLabel plotLbl;
+    private JPanel plotPanel;
+    private JButton startStopBtn;
     private boolean serverActiveFlag;
 
     /**
@@ -246,21 +263,32 @@ public class ServerUI extends JFrame {
      */
     public static void main(String args[]) {
         try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) 
+			{
+                if ("Nimbus".equals(info.getName())) 
+				{
                     UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ServerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ServerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ServerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ServerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        } 
+		
+		catch (UnsupportedLookAndFeelException e) 
+        {
+        	Log.log(Level.WARNING, null, e);
+            
+        } catch (ClassNotFoundException e) 
+        {
+			Log.log(Level.SEVERE, null, e);
+		} catch (InstantiationException e) 
+		{
+			
+			Log.log(Level.SEVERE, null, e);
+		} catch (IllegalAccessException e) 
+		{
+			
+			Log.log(Level.SEVERE, null, e);
+		}
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -270,21 +298,5 @@ public class ServerUI extends JFrame {
         });
     }
 
-    // Variables declaration               
-    private JLabel consoleLbl;
-    private JPanel consolePanel;
-    private JScrollPane consoleScrollPane;
-    private JTextArea consoleTxt;
-    private JPanel controlsPanel;
-    private JLabel frequencyLbl;
-    private JTextField frequencyTxt;
-    private JLabel highestValLbl;
-    private JTextField highestValTxt;
-    private JLabel lowestValLbl;
-    private JTextField lowestValTxt;
-    private JPanel plotContainerPnl;
-    private JLabel plotLbl;
-    private JPanel plotPanel;
-    private JButton startStopBtn;
-    // End of variables declaration                   
+                      
 }
