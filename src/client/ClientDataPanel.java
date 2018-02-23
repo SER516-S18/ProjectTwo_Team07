@@ -3,14 +3,19 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Component;
 
 import javax.swing.*;
 import javax.swing.WindowConstants;
 
+import com.sun.tools.internal.jxc.ap.Const;
+
+import util.Constants;
+
 /**
  * ClientDataPanel - returns panel containing client data values
  */
-public class ClientDataPanel extends JPanel{
+public class ClientDataPanel extends JPanel {
     private static JPanel clientDataPanel;
     private static JLabel highestValLbl;
     private static JTextField highestTxtField;
@@ -22,7 +27,7 @@ public class ClientDataPanel extends JPanel{
     private static JSpinner spinner;
     private static JLabel frequencyValLbl;
     private static JTextField frequencyTxtField;
-    private static SpinnerModel value = new SpinnerNumberModel(0, 0, 10, 1);  
+    private static SpinnerModel value = new SpinnerNumberModel(0, 0, 10, 1);
     private static Dimension txtFieldPreferredSize = new Dimension(120, 50);
     private static Dimension lblPreferredSize = new Dimension(120, 42);
 
@@ -51,6 +56,18 @@ public class ClientDataPanel extends JPanel{
     }
 
     /*
+    Creates new JLabel object for client data labels
+    @param: Color clr
+    */
+    private static JTextField createTxtField(Color clr) {
+        JTextField txtField = new JTextField();
+        txtField.setPreferredSize(txtFieldPreferredSize);
+        txtField.setEditable(false);
+        txtField.setBackground(clr);
+        return txtField;
+    }
+
+    /*
     Creates new JPanel to contain text fields for client data output
     @param: JTextField txtField
     */
@@ -67,36 +84,34 @@ public class ClientDataPanel extends JPanel{
         clientDataPanel.setSize(new Dimension(250, 250));
         spinner = new JSpinner(value);
         spinner.setPreferredSize(txtFieldPreferredSize);
+        Component c = spinner.getEditor().getComponent(0);
+        c.setBackground(Constants.COLOR_BLUE);
 
-        lowestValLbl = createDataLabel("Highest Value: ");
-        JPanel highestValLblPanel = createDataLabelPanel(lowestValLbl, Color.PINK);
+        highestValLbl = createDataLabel("Highest Value: ");
+        JPanel highestValLblPanel = createDataLabelPanel(highestValLbl, Constants.COLOR_BLUE);
 
-        lowestTxtField = new JTextField();
-        lowestTxtField.setPreferredSize(txtFieldPreferredSize);
-        JPanel lowestTxtFieldPanel = createTxtFieldPanel(lowestTxtField);
-
-        highestValLbl = createDataLabel("Lowest Value: ");
-        JPanel lowestValLblPanel = createDataLabelPanel(highestValLbl, Color.PINK);
-
-        highestTxtField = new JTextField();
-        highestTxtField.setPreferredSize(txtFieldPreferredSize);
+        highestTxtField = createTxtField(Constants.COLOR_PINK);
         JPanel highestTxtFieldPanel = createTxtFieldPanel(highestTxtField);
 
-        averageValLbl = createDataLabel("Average: ");
-        JPanel averageValLblPanel = createDataLabelPanel(averageValLbl, Color.PINK);
+        lowestValLbl = createDataLabel("Lowest Value: ");
+        JPanel lowestValLblPanel = createDataLabelPanel(lowestValLbl, Constants.COLOR_PINK);
 
-        averageTxtfield = new JTextField();
-        averageTxtfield.setPreferredSize(txtFieldPreferredSize);
+        lowestTxtField = createTxtField(Constants.COLOR_BLUE);
+        JPanel lowestTxtFieldPanel = createTxtFieldPanel(lowestTxtField);
+
+        averageValLbl = createDataLabel("Average: ");
+        JPanel averageValLblPanel = createDataLabelPanel(averageValLbl, Constants.COLOR_BLUE);
+
+        averageTxtfield = createTxtField(Constants.COLOR_PINK);
         JPanel averageTxtfieldPanel = createTxtFieldPanel(averageTxtfield);
 
         chanelValLbl = createDataLabel("Channel: ");
-        JPanel chanelValLblPanel = createDataLabelPanel(chanelValLbl, Color.PINK);
+        JPanel chanelValLblPanel = createDataLabelPanel(chanelValLbl, Constants.COLOR_PINK);
 
         frequencyValLbl = createDataLabel("Frequency(Hz): ");
-        JPanel frequencyValLblPanel = createDataLabelPanel(frequencyValLbl, Color.PINK);
+        JPanel frequencyValLblPanel = createDataLabelPanel(frequencyValLbl, Constants.COLOR_BLUE);
 
-        frequencyTxtField = new JTextField();
-        frequencyTxtField.setPreferredSize(txtFieldPreferredSize);
+        frequencyTxtField = createTxtField(Constants.COLOR_PINK);
         JPanel frequencyTxtFieldPanel = createTxtFieldPanel(frequencyTxtField);
 
         gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -158,5 +173,5 @@ public class ClientDataPanel extends JPanel{
     //     window.setVisible(true);
     //     window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     // }
-    
+
 }
