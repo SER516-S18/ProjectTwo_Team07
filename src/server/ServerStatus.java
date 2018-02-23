@@ -11,7 +11,10 @@ public class ServerStatus extends JComponent{
     */
     public static JPanel pPanel = ServerUI.getPlotPanel();
     public static void startBlinking(){
-            if(isServerRunning(8080)){             
+            if(isServerRunning(8080)){  
+                JLabel nj  = new JLabel();
+                nj.setText("Not Running....");
+                pPanel.add(nj);
                 System.out.println("Running");
             }
         }
