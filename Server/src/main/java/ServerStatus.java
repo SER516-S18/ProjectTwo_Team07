@@ -20,24 +20,24 @@ public class ServerStatus extends JComponent{
      }
     public static boolean isServerRunning(int port) {
        // int port=8080;
-    ServerSocket ss = null;
-    DatagramSocket ds = null;
+    ServerSocket server_socket = null;
+    DatagramSocket datagram_socket = null;
     try {
-        ss = new ServerSocket(port);
-        ss.setReuseAddress(true);
-        ds = new DatagramSocket(port);
-        ds.setReuseAddress(true);
+        server_socket = new ServerSocket(port);
+        server_socket.setReuseAddress(true);
+        datagram_socket = new DatagramSocket(port);
+        datagram_socket.setReuseAddress(true);
         return false;
     } catch (IOException e) {
         return true;
     } finally {
-        if (ds != null) {
-            ds.close();
+        if (datagram_socket != null) {
+            datagram_socket.close();
         }
 
-        if (ss != null) {
+        if (server_socket != null) {
             try {
-                ss.close();
+                server_socket.close();
             } catch (IOException e) {
                 /* should not be thrown */
             return true;
