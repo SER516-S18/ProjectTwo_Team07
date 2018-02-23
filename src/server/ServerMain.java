@@ -41,7 +41,7 @@ public class ServerMain {
 
                     System.out.println("Server received the request: " + request.getNumChannels());
 
-                    Response response = new Response(new int[request.getNumChannels()]);
+                    Response response = new Response(new int[request.getNumChannels()],  2);
 
                     connection.sendTCP(response);
                 }

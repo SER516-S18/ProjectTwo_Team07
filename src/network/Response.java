@@ -10,21 +10,15 @@ package network;
  */
 public class Response {
     private int[] channelNumbers;
-    private boolean frequencyChange;
     private int frequency;
 
-    public Response(int[] channelNumbers, boolean frequencyChange, int frequency) {
+    public Response(int[] channelNumbers, int frequency) {
         this.channelNumbers = channelNumbers;
-        this.frequencyChange = frequencyChange;
         this.frequency = frequency;
     }
 
     public int[] getChannelNumbers() {
         return channelNumbers;
-    }
-
-    public boolean isFrequencyChange() {
-        return frequencyChange;
     }
 
     public int getFrequency() {
@@ -33,10 +27,6 @@ public class Response {
 
     public void setChannelNumbers(int[] channelNumbers) {
         this.channelNumbers = channelNumbers;
-    }
-
-    public void setFrequencyChange(boolean frequencyChange) {
-        this.frequencyChange = frequencyChange;
     }
 
     public void setFrequency(int frequency) {
