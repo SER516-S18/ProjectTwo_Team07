@@ -46,6 +46,8 @@ Compile
     
 ### Windows
 
+    Use Git Bash, [Download and Instructions here](https://git-scm.com/downloads)
+
     In IDE run main in server.ServerMain and client.ClientMain
 
 
