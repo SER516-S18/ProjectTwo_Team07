@@ -17,6 +17,7 @@ public class ClientConsole {
 
     static JTextPane console = ClientUI.getConsoleTextArea();
     private final static Logger LOGGER = Logger.getLogger(ClientConsole.class.getName());
+    private final static String CONTENT_TYPE = "text/html";
 
     /**
      * Used to display error messages in the client console
@@ -25,8 +26,9 @@ public class ClientConsole {
      */
     public static void setErrorMessage(String errorMessage) {
         try {
+            console.setContentType(CONTENT_TYPE);
             HTMLDocument doc=(HTMLDocument) console.getStyledDocument();
-            doc.insertAfterEnd(doc.getCharacterElement(doc.getLength()),"<span style=\"color:red\">" + new Date() + " " + errorMessage + "</span> <br>");
+            doc.insertAfterEnd(doc.getCharacterElement(doc.getLength()),"<span style=\"color:red\">[" + new Date() + "] " + errorMessage + "</span> <br>");
         } catch (Exception ex) {
             LOGGER.log(Level.SEVERE, "Exception while adding Error Message to client console", ex);
         }
@@ -39,8 +41,9 @@ public class ClientConsole {
      */
     public static void setMessage(String message) {
         try {
+            console.setContentType(CONTENT_TYPE);
             HTMLDocument doc=(HTMLDocument) console.getStyledDocument();
-            doc.insertAfterEnd(doc.getCharacterElement(doc.getLength()),"<span style=\"color:black\">" + new Date() + " " + message + "</span> <br>");
+            doc.insertAfterEnd(doc.getCharacterElement(doc.getLength()),"<span style=\"color:black\">[" + new Date() + "] " + message + "</span> <br>");
         } catch (Exception ex) {
             LOGGER.log(Level.SEVERE, "Exception while adding Message to client console", ex);
         }
