@@ -66,7 +66,7 @@ public class ClientUI extends javax.swing.JFrame {
         consoleText = new JTextPane();
         consoleScroller = new JScrollPane(consoleText);
 
-
+        ClientConsole.setMessage("Initializing Client Modules....");
         /*
          * Design frame with required dimensions and specification
          */
@@ -144,7 +144,8 @@ public class ClientUI extends javax.swing.JFrame {
                                 .addGap(161, 161, 161))
         );
 
-
+        ClientConsole.setMessage("Graph module initialized");
+        
         /*
          * Panel for holding Highest value label
          */
@@ -426,7 +427,9 @@ public class ClientUI extends javax.swing.JFrame {
                                                 .addGap(0, 342, Short.MAX_VALUE)))
                                 .addContainerGap())
         );
-
+        
+        ClientConsole.setMessage("Client status modules initialized");
+        
         /*
          * Panel for holding Console label
          * Panel  displays success and error message
@@ -507,7 +510,7 @@ public class ClientUI extends javax.swing.JFrame {
                         .addGap(0, 100, Short.MAX_VALUE)
         );
 
-
+        ClientConsole.setMessage("Console module initialized");
 
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -541,7 +544,7 @@ public class ClientUI extends javax.swing.JFrame {
         );
 
         pack();
-
+        ClientConsole.setMessage("Client modules successfully initialized");
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
