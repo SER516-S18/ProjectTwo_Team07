@@ -46,9 +46,9 @@ Compile
     
 ### Windows
 
-    Use Git Bash, [Download and Instructions here](https://git-scm.com/downloads)
-
+    Use Git Bash
+    Or,
     In IDE run main in server.ServerMain and client.ClientMain
 
-
+[Git Bash download link](https://git-scm.com/downloads)
 
