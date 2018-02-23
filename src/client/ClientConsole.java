@@ -1,7 +1,5 @@
 package client;
 
-
-
 import java.awt.Dimension;
 import java.util.Date;
 import java.util.logging.Level;
