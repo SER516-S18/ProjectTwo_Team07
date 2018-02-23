@@ -6,6 +6,7 @@ import com.esotericsoftware.kryonet.Listener;
 import network.Register;
 import network.Request;
 import network.Response;
+import util.Constants;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -21,15 +22,12 @@ import java.util.Arrays;
  */
 public class ClientMain {
 
-    private static final int TIMEOUT = 5000;
-    private static final String HOST = "localhost";
-    private static final int TCP_PORT = 8080;
     private static Client client;
-
-    static boolean messageReceived = false;
+    private static ClientData clientData;
 
     public static void main(String[] args) throws IOException {
-        // startClient();
+        clientData = new ClientData();
+        startClient();
     }
 
     // client will disconnect unless thread keeps running
@@ -40,7 +38,7 @@ public class ClientMain {
         client.start();
 
         try {
-            client.connect(TIMEOUT, HOST, TCP_PORT);
+            client.connect(Constants.TIMEOUT, Constants.HOST, Constants.TCP_PORT);
         }catch(Exception e){
             System.out.println(e.getStackTrace());
             return false;
@@ -51,20 +49,31 @@ public class ClientMain {
         Request request = new Request(4);
         client.sendTCP(request);
 
-        boolean clientIsActive = true;
-
+        // listens for messages from the server
         client.addListener(new Listener() {
             public void received (Connection connection, Object object) {
                 if (object instanceof Response) {
                     Response response = (Response) object;
 
                     System.out.println("A response from the server: " + Arrays.toString(response.getChannelNumbers()));
+
+                    clientData.addChannelData(response.getChannelNumbers());
+
+                    System.out.println(
+                            "Max is: " + clientData.getMax()
+                            + " Min is: " + clientData.getMin()
+                            + " Frequency is: " + response.getFrequency());
                 }
             }
         });
 
-        // for(;;);
-        return true;
+        for(;;);
+    }
+
+    // called when the number of channels changes
+    public static void setChannels(int channels) {
+        Request request = new Request(channels);
+        client.sendTCP(request);
     }
 
     public static void stopClient(){

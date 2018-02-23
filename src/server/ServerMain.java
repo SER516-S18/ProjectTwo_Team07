@@ -6,8 +6,11 @@ import com.esotericsoftware.kryonet.Server;
 import network.Register;
 import network.Request;
 import network.Response;
+import util.Constants;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Server
@@ -20,17 +23,19 @@ import java.io.IOException;
  */
 public class ServerMain {
 
-    private static final int TCP_PORT = 8080;
     static Server server;
 
+    private static ServerData serverData;
+
     public static void main(String[] args) throws IOException {
+        serverData = new ServerData();
         startServer();
     }
 
     public static void startServer() throws IOException {
         server = new Server();
         server.start();
-        server.bind(TCP_PORT);
+        server.bind(Constants.TCP_PORT);
 
         Register.register(server);
 
@@ -39,18 +44,40 @@ public class ServerMain {
                 if (object instanceof Request) {
                     Request request = (Request) object;
 
+                    serverData.setFrequency(2);
+                    serverData.setMax(200);
+                    serverData.setMin(2);
+
                     System.out.println("Server received the request: " + request.getNumChannels());
 
-                    Response response = new Response(new int[request.getNumChannels()],  2);
-
-                    connection.sendTCP(response);
+                    buildResponse(connection.getID(), request.getNumChannels());
                 }
             }
         });
     }
 
-    public static void stopServer(){
+    public static void stopServer() {
         server.close();
         server.stop();
+    }
+
+    private static void buildResponse(int connectionId, int numChannels) {
+        Timer timer = new Timer();
+        timer.schedule(new SendRespone(connectionId, numChannels), 0, serverData.getResponseSeconds());
+    }
+
+    static class SendRespone extends TimerTask {
+        private int connectionId;
+        private int numChannels;
+
+        public SendRespone(int connectionId, int numChannels) {
+            this.connectionId = connectionId;
+            this.numChannels = numChannels;
+        }
+
+        public void run() {
+            Response response = new Response(serverData.generateChannelNumbers(numChannels),  serverData.getFrequency());
+            server.sendToTCP(connectionId, response);
+        }
     }
 }

@@ -19,5 +19,7 @@ public class Constants {
     public static final String HIGHEST_VAL_LBL = "Highest Value";
     public static final String LOWEST_VAL_LBL = "Lowest Value";
     public static final String FREQUENCY_LBL = "Frequency(Hz)";
-    public static final int TCP_PORT = 8080;
+    public static final int TCP_PORT = 3000;
+    public static final String HOST = "localhost";
+    public static final int TIMEOUT = 5000;
 }

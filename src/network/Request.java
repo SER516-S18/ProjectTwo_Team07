@@ -12,6 +12,8 @@ public class Request {
 
     private int numChannels;
 
+    public Request() {}
+
     public Request(int numChannels) {
         this.numChannels = numChannels;
     }

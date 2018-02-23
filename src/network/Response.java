@@ -12,6 +12,8 @@ public class Response {
     private int[] channelNumbers;
     private int frequency;
 
+    public Response() {}
+
     public Response(int[] channelNumbers, int frequency) {
         this.channelNumbers = channelNumbers;
         this.frequency = frequency;

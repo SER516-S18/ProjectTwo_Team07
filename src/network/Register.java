@@ -15,7 +15,7 @@ public class Register {
 
     static public void register(EndPoint endPoint) {
         Kryo kryo = endPoint.getKryo();
-        kryo.register(Integer[].class);
+        kryo.register(int[].class);
         kryo.register(Request.class);
         kryo.register(Response.class);
     }
