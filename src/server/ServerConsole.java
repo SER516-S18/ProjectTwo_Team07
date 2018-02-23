@@ -1,3 +1,5 @@
+package server;
+
 public class ServerConsole {
     public ServerConsole(){}
 

@@ -1,8 +1,9 @@
-import java.awt.Color;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+package client;
 
 import javax.swing.*;
+import java.awt.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ServerUI extends JFrame {
 
@@ -150,17 +151,17 @@ public class ServerUI extends JFrame {
 		lowestValLbl.setText("Lowest Value");
 		lowestValLbl.setOpaque(true);
 
-		lowestValTxt.setBackground(new java.awt.Color(153, 153, 255));
+		lowestValTxt.setBackground(new Color(153, 153, 255));
 		lowestValTxt.setHorizontalAlignment(JTextField.CENTER);
 		lowestValTxt.setText("0");
 		lowestValTxt.setPreferredSize(new java.awt.Dimension(76, 16));
 
-		frequencyLbl.setBackground(new java.awt.Color(153, 153, 255));
+		frequencyLbl.setBackground(new Color(153, 153, 255));
 		frequencyLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		frequencyLbl.setText("Frequency (Hz)");
 		frequencyLbl.setOpaque(true);
 
-		frequencyTxt.setBackground(new java.awt.Color(255, 204, 204));
+		frequencyTxt.setBackground(new Color(255, 204, 204));
 		frequencyTxt.setHorizontalAlignment(JTextField.CENTER);
 		frequencyTxt.setText("5");
 
