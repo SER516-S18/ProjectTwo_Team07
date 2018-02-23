@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Client Data
+ *
+ * Holds all of the clients data
+ *
+ * @author Team 7
+ * @version 1.0
+ */
 public class ClientData {
 
     private int max;
