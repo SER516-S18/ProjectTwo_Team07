@@ -6,14 +6,15 @@ import java.net.ServerSocket;
 import javax.swing.*;
 
 public class ServerStatus extends JComponent{
-    
-   
+  /**
+    * 
+    */
+    public static JPanel pPanel = ServerUI.getPlotPanel();
     public static void startBlinking(){
-        // TODO add your handling code here:
-        if(isServerRunning(8080)){             
-            System.out.println("Running");
+            if(isServerRunning(8080)){             
+                System.out.println("Running");
+            }
         }
-    }
     public static boolean isServerRunning(int port) {
        // int port=8080;
     ServerSocket server_socket = null;
@@ -42,9 +43,11 @@ public class ServerStatus extends JComponent{
     }
     }
     public static void stopBlinking(){
-        // TODO add your handling code here:
-    if(!isServerRunning(8080)){
-        System.out.println("Not Running");
-    }
-    }
+        if(!isServerRunning(8080)){
+            JLabel nj  = new JLabel();
+            nj.setText("Not Running....");
+            pPanel.add(nj);
+            System.out.println("Not Running");
+        }
+        }
 }
