@@ -27,6 +27,8 @@ public class ServerUI extends JFrame {
 	private JButton startStopBtn;
 	private boolean serverActiveFlag;
 
+	private static ServerConnection serverConnection;
+
 	/**
 	 * Creates new form ServerUI
 	 */
@@ -244,7 +246,7 @@ public class ServerUI extends JFrame {
 		if(!serverActiveFlag){
 			serverActiveFlag = true;
 			try{
-				ServerMain.startServer();
+				serverConnection.start();
 			}catch (Exception e){
 				ServerConsole.setErrorMessage(e.getMessage());
 			}
@@ -256,7 +258,7 @@ public class ServerUI extends JFrame {
 			serverActiveFlag = false;
 			ServerStatus.stopBlinking();
 			ServerConsole.setMessage("Stopping server...");
-			ServerMain.stopServer();
+			serverConnection.stop();
 			startStopBtn.setText("Start");
 		}
 	}
@@ -265,6 +267,7 @@ public class ServerUI extends JFrame {
 	 * @param args the command line arguments
 	 */
 	public static void main(String args[]) {
+		serverConnection = new ServerConnection();
 		try {
 			for (UIManager.LookAndFeelInfo info:UIManager.getInstalledLookAndFeels()) 
 			{

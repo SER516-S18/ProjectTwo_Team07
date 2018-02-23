@@ -2,6 +2,7 @@ package client;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,7 +17,7 @@ public class ClientData {
 
     private int max;
     private int min;
-    private Map<Integer, ArrayList<Integer>> channelData;
+    private Map<Integer, List<Integer>> channelData;
 
     public ClientData() {
         this.max = 0;
@@ -34,10 +35,14 @@ public class ClientData {
 
         for(int i = 0; i < randomChannelNumbers.length; i++) {
             verifyMaxMin(randomChannelNumbers[i]);
-            ArrayList<Integer> channel = channelData.getOrDefault(i, new ArrayList<>());
+            List<Integer> channel = channelData.getOrDefault(i, new ArrayList<>());
             channel.add(randomChannelNumbers[i]);
             channelData.put(i, channel);
         }
+    }
+
+    public Map<Integer, List<Integer>> getChannelData() {
+        return channelData;
     }
 
     private void verifyMaxMin(int sample) {
