@@ -8,18 +8,12 @@ import javax.swing.*;
 public class ServerStatus extends JComponent{
     
    
-    public ServerStatus(){}
-
     public static void startBlinking(){
         // TODO add your handling code here:
         if(isServerRunning(8080)){             
             System.out.println("Running");
         }
     }
-     private void initComponents() {
-
-       
-     }
     public static boolean isServerRunning(int port) {
        // int port=8080;
     ServerSocket server_socket = null;
