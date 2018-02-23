@@ -13,7 +13,7 @@ import java.util.Arrays;
 
 /**
  * ClientConnection
- *
+ * <p>
  * Creates socket client connection and sends requests to the server
  * and handles responses.
  *
@@ -33,7 +33,7 @@ public class ClientConnection {
     private void setListener() {
         // listens for messages from the server
         client.addListener(new Listener() {
-            public void received (Connection connection, Object object) {
+            public void received(Connection connection, Object object) {
                 if (object instanceof Response) {
                     Response response = (Response) object;
 
@@ -44,6 +44,7 @@ public class ClientConnection {
                     System.out.println(
                             "Max is: " + clientData.getMax()
                                     + " Min is: " + clientData.getMin()
+                                    + " Average is: " + clientData.getAverage()
                                     + " Frequency is: " + response.getFrequency());
                 }
             }
@@ -52,7 +53,7 @@ public class ClientConnection {
 
     // called when the number of channels changes
     public void setNumChannels(int channels) {
-        if(!client.isConnected()) {
+        if (!client.isConnected()) {
             start();
         }
         Request request = new Request(channels);
@@ -60,7 +61,7 @@ public class ClientConnection {
     }
 
     public void start() {
-        if(!client.isConnected()) {
+        if (!client.isConnected()) {
             client.start();
 
             try {
