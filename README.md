@@ -36,11 +36,11 @@ Run Client
 
 ### Mac/Linux
 
-Compile
+Make build.sh executable
 
     chmod +x build.sh
 
-Make build.sh executable
+Compile
 
     ./build.sh
     
