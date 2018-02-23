@@ -22,18 +22,31 @@
 * Suman Parlapalli - 86
 * Tejasi Palkar - 83
 
-## How to Build Project
+## How to Run Project
 
-    mvn clean package
+Run Server
 
-If you don't have maven installed, install it [here](https://maven.apache.org/install.html)
+    java -jar server.jar
+ 
+Run Client
 
-## Run Server
+    java -jar client.jar
 
-    java -jar Server/target/server.jar
+## How to Compile Project
 
-## Run Client
+### Mac/Linux
 
-    java -jar Client/target/client.jar
+Compile
+
+    chmod +x build.sh
+
+Make build.sh executable
+
+    ./build.sh
+    
+### Windows
+
+    In IDE run main in server.ServerMain and client.ClientMain
+
 
 
