@@ -22,6 +22,7 @@ import javax.swing.UIManager;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 
+import util.Constants;
 //package clientui;
 
 /**
@@ -46,6 +47,8 @@ public class ClientUI {
         }
 
         public ClientUI() {
+                ClientConsole.setMessage("Initializing Client Modules...");
+                
                 ClientDataPanel cdpanel = new ClientDataPanel();
                 clientDataPanel = cdpanel.clientDataPanel;
                 toggleBtn = new JButton("Start");
@@ -63,10 +66,7 @@ public class ClientUI {
                 plotPanel.setBackground(Constants.COLOR_PINK);
 
                 // Replace with Console Panel code
-                consolePanel = new JPanel();
-                consolePanel.setSize(600, 200);
-                consolePanel.add(new JButton("Placeholder for Console"));
-                consolePanel.setBackground(Constants.COLOR_GRAY);
+                consolePanel = ClientConsole.getConsolePanel();
 
                 gbc.fill = GridBagConstraints.HORIZONTAL;
                 gbc.gridx = 1;
@@ -88,6 +88,8 @@ public class ClientUI {
                 gbc.gridy = 2;
                 gbc.gridwidth = 2;
                 clientUIPanel.add(consolePanel, gbc);
+                
+                ClientConsole.setMessage("Client Modules Initialized");
         }
 
         // public static void main(String[] args) {
