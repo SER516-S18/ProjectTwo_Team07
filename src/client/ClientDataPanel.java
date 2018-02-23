@@ -16,7 +16,7 @@ import util.Constants;
  * ClientDataPanel - returns panel containing client data values
  */
 public class ClientDataPanel extends JPanel {
-    private static JPanel clientDataPanel;
+    public static JPanel clientDataPanel;
     private static JLabel highestValLbl;
     private static JTextField highestTxtField;
     private static JLabel lowestValLbl;
