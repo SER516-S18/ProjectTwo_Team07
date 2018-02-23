@@ -3,6 +3,9 @@ package client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
+import network.Register;
+import network.Request;
+import network.Response;
 
 import java.io.IOException;
 
