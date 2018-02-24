@@ -17,21 +17,18 @@ import javax.swing.text.StyledDocument;
  * @author Team 7
  * @version 1.0
  */
-
 public class ServerConsole {
 
 	private final static Logger LOGGER = Logger.getLogger(ServerConsole.class.getName());
 	private static JTextPane consoletextPane = null;
 	private final static String CONTENT_TYPE = "text/html";
 
-	public ServerConsole() {
+	public ServerConsole() {}
 
-	}
 	/**
 	 * 
 	 * @param errorMessage 
 	 */
-
 	public static void setErrorMessage(String errorMessage) {
 
 		try
@@ -99,7 +96,6 @@ public class ServerConsole {
 		}
 		return consoletextPane;
 	}
-
 }
 
 

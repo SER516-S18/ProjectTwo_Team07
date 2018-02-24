@@ -22,13 +22,12 @@ public class ServerData {
         this.min = 0;
     }
 
-    public void reset() {
-        frequency = 1;
-        max = 0;
-        min = 0;
-    }
-
-    
+    /**
+     * Generates a random list of numbers
+     *
+     * @param numChannels - number of channels
+     * @return random list of numbers
+     */
     public int[] generateChannelNumbers(int numChannels) {
         int[] channelNumbers = new int[numChannels];
 
@@ -41,6 +40,10 @@ public class ServerData {
         return channelNumbers;
     }
 
+    /**
+     * Gets rate of frequency
+     *
+     */
     public int getResponseSeconds() {
         return 1000 / frequency;
     }
@@ -49,6 +52,10 @@ public class ServerData {
         return frequency;
     }
 
+    /**
+     * Sets the server sending frequency, connot be 0 or less
+     *
+     */
     public void setFrequency(int frequency) {
         if(frequency <= .001) {
             this.frequency = 1;

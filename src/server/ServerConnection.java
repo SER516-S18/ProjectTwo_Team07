@@ -54,6 +54,10 @@ public class ServerConnection {
         return serverData.getMin();
     }
 
+    /**
+     * Start server, throws exception if port is already in use
+     *
+     */
     public void start() {
         server.start();
 
@@ -68,11 +72,19 @@ public class ServerConnection {
         addListener();
     }
 
+    /**
+     * Stop server and close connection
+     *
+     */
     public void stop() {
         server.close();
         server.stop();
     }
 
+    /**
+     * Starts listener for receiving client requests
+     *
+     */
     private void addListener() {
         server.addListener(new Listener() {
             public void received (Connection connection, Object object) {
@@ -87,11 +99,23 @@ public class ServerConnection {
         });
     }
 
+    /**
+     * Creates the response to send back to the client
+     *
+     */
     private void buildResponse(int connectionId, int numChannels) {
         Timer timer = new Timer();
         timer.schedule(new SendResponse(connectionId, numChannels), 0, serverData.getResponseSeconds());
     }
 
+    /**
+     * Send Response
+     *
+     * Send a response to the client based on the frequency
+     *
+     * @author Team 7
+     * @version 1.0
+     */
     private class SendResponse extends TimerTask {
         private int connectionId;
         private int numChannels;
