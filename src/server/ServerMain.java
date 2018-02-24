@@ -18,9 +18,11 @@ public class ServerMain {
         serverConnection.setMax(100);
         serverConnection.setMin(2);
         
-//         new ServerUI();
-//         ServerConsole serverConsole = new ServerConsole();
-// 		serverConsole.setErrorMessage("This is dummy error");
-// 		serverConsole.setMessage("Hello world..");
+         new ServerUI();
+         ServerUI serverUI = new ServerUI();
+         serverUI.initialize();
+      //   ServerConsole serverConsole = new ServerConsole();
+ 	//	serverConsole.setErrorMessage("This is dummy error");
+ 	//	serverConsole.setMessage("Hello world..");
     }
 }
