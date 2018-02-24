@@ -66,6 +66,7 @@ public class ClientConnection {
 	public void setGraph(int channels) {
     	graphPlot.plotGraph(channels, clientData.getChannelData());
     }
+
 	// called when the number of channels changes
 	public boolean setNumChannels(int channels) {
 	    boolean isServerActive = false;
@@ -97,7 +98,7 @@ public class ClientConnection {
 			}
 
 			Register.register(client);
-			//Called to render the initial graph
+			// called to render the initial graph
 			initGraph(channels);
 			setListener(channels);
 		}

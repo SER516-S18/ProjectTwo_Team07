@@ -1,6 +1,5 @@
 package client;
 
-import javax.swing.*;
 import java.io.IOException;
 
 /**
@@ -16,6 +15,5 @@ public class ClientMain {
 
     public static void main(String[] args) throws IOException {
         ClientUI clientui = new ClientUI();
-        for (; ; ) ;
     }
 }

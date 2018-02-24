@@ -122,7 +122,5 @@ public class ClientConsole {
                                 .addComponent(consoleScroller)
                                 .addContainerGap(88, Short.MAX_VALUE))
         );
-		
     }
-    
 }

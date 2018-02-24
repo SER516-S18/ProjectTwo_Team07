@@ -27,13 +27,6 @@ public class ServerData {
         max = 0;
         min = 0;
     }
-    
-    /**
- * ServerData
- *
- * Generate a random number
- *
- */
 
     public int[] generateChannelNumbers(int numChannels) {
         int[] channelNumbers = new int[numChannels];
