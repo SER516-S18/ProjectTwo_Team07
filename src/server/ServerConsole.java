@@ -1,10 +1,13 @@
 package server;
 
 import java.awt.Color;
+import java.awt.Container;
+import java.awt.Font;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTextPane;
+import javax.swing.border.LineBorder;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
@@ -12,15 +15,17 @@ import javax.swing.text.StyledDocument;
 public class ServerConsole {
 
 	private final static Logger LOGGER = Logger.getLogger(ServerConsole.class.getName());
-	private JTextPane console = new ServerUI().getConsolePane();
+	private static JTextPane consoletextPane = null;
+    private final static String CONTENT_TYPE = "text/html";
 	
 	public ServerConsole() {
 	
 	}
 	
-	public void setErrorMessage(String errorMessage) {
+	public static void setErrorMessage(String errorMessage) {
 
-		StyledDocument doc = (StyledDocument) console.getDocument();
+		consoletextPane.setContentType(CONTENT_TYPE);
+		StyledDocument doc = (StyledDocument) consoletextPane.getDocument();
 		SimpleAttributeSet keyWord = new SimpleAttributeSet();
 		StyleConstants.setForeground(keyWord, Color.RED);
 		StyleConstants.setFontFamily(keyWord, "Times New Roman");
@@ -36,9 +41,10 @@ public class ServerConsole {
 
 	}
 
-	public void setMessage(String message) {
+	public static void setMessage(String message) {
 		try {
-			StyledDocument doc = (StyledDocument) console.getDocument();
+			consoletextPane.setContentType(CONTENT_TYPE);
+			StyledDocument doc = (StyledDocument) consoletextPane.getDocument();
 			SimpleAttributeSet keyWord = new SimpleAttributeSet();
 			StyleConstants.setForeground(keyWord, Color.BLACK);
 			StyleConstants.setFontFamily(keyWord, "Times New Roman");
@@ -48,5 +54,29 @@ public class ServerConsole {
 			LOGGER.log(Level.SEVERE,"Exception while adding Message", ex);
 		}
 	}
+	
+	private static void constructConsolePanel()
+	{
+		consoletextPane = new JTextPane();
+		consoletextPane.setBorder(new LineBorder(Color.BLUE));
+		consoletextPane.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		consoletextPane.setEditable(false);
+		consoletextPane.setContentType("text/html");
+		consoletextPane.setForeground(Color.BLACK);
+		consoletextPane.setBackground(Color.LIGHT_GRAY);
+		consoletextPane.setBounds(28, 459, 834, 157);
+		
+	}
+	
+	public static Container getConsolePane()
+	{
+		if(consoletextPane == null)
+		{	
+			constructConsolePanel();
+		}
+		return consoletextPane;
+	}
+	
 }
+
 
