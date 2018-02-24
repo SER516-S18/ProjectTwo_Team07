@@ -46,9 +46,7 @@ Compile
     
 ### Windows
 
-    Use Git Bash
-    Or,
-    In IDE run main in server.ServerMain and client.ClientMain
+Compile
 
-[Git Bash download link](https://git-scm.com/downloads)
+    build.bat
 
