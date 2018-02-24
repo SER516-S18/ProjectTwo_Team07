@@ -25,6 +25,8 @@ import javax.swing.text.StyleConstants;
 import util.Constants;
 
 /**
+ * This class contains methods to initiate User Interface
+ *
  *
  * @author Team 7
  */
