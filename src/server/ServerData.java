@@ -28,9 +28,11 @@ public class ServerData {
         min = 0;
     }
 
+    
     public int[] generateChannelNumbers(int numChannels) {
         int[] channelNumbers = new int[numChannels];
 
+        // generate random number logic
         Random random = new Random();
 
         for(int i = 0; i < channelNumbers.length; i++) {
