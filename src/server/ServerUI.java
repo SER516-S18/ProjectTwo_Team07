@@ -1,18 +1,12 @@
 package server;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JButton;
+import javax.swing.*;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JPanel;
 import java.awt.Rectangle;
 import java.awt.Component;
-import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
 import javax.swing.border.EtchedBorder;
 
 public class ServerUI {
@@ -136,7 +130,9 @@ public class ServerUI {
 		controlPanel.add(plotPanel);
 				
 		JTextPane consoletextPane = (JTextPane) ServerConsole.getConsolePane();
-		JFrame.getContentPane().add(consoletextPane);
+		JScrollPane scrolltxt=new JScrollPane(consoletextPane);
+		scrolltxt.setBounds(28, 459, 834, 157);
+		JFrame.getContentPane().add(scrolltxt);
 				
 		JLabel lblConsole = new JLabel("Console:");
 		lblConsole.setBounds(28, 443, 61, 14);
