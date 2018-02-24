@@ -17,7 +17,7 @@ public class ClientData {
 
     private int max;
     private int min;
-    private float average;
+    private double average;
     private Map<Integer, List<Integer>> channelData;
 
     public ClientData() {
@@ -38,7 +38,7 @@ public class ClientData {
         for (int i = 0; i < randomChannelNumbers.length; i++) {
             verifyMaxMin(randomChannelNumbers[i]);
             List<Integer> channel = channelData.getOrDefault(i, new ArrayList<>());
-            int sum = 0;
+            double sum = 0;
             for (int j = 0; j < randomChannelNumbers.length; j++)
                 sum = sum + randomChannelNumbers[i];
 
@@ -77,11 +77,11 @@ public class ClientData {
         this.min = min;
     }
 
-    public float getAverage() {
+    public double getAverage() {
         return average;
     }
 
-    public void setAverage(float average) {
+    public void setAverage(double average) {
         this.average = average;
     }
 }

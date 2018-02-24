@@ -23,16 +23,15 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 
 import util.Constants;
-//package clientui;
 
 /**
  *
  * @author Team 7
  */
-public class ClientUI {
+public class ClientUI extends JPanel{
 
         private static JPanel plotPanel;
-        private static JPanel clientDataPanel;
+        public static JPanel clientDataPanel;
         private static JPanel consolePanel;
         private static JPanel clientTopPanel;
         public static JPanel clientUIPanel;
