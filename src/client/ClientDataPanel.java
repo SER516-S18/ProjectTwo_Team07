@@ -14,6 +14,8 @@ import util.Constants;
 
 /**
  * ClientDataPanel - returns panel containing client data values
+ *
+ * @author team7
  */
 public class ClientDataPanel extends JPanel {
     public static JPanel clientDataPanel;
