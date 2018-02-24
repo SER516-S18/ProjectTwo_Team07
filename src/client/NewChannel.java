@@ -1,3 +1,5 @@
+package client;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -5,9 +7,10 @@ import java.awt.event.ActionListener;
 
 public class NewChannel extends JFrame {
     public String temp1;
-    private String[] description = { "1", "2", "3", "4", "5", "6", "7", "8" };
+    private String[] description = {"1", "2", "3", "4", "5", "6", "7", "8"};
     private JComboBox c = new JComboBox();
     private int count = 0;
+
     NewChannel() {
         for (int i = 0; i < 8; i++)
             c.addItem(description[count++]);
@@ -25,11 +28,13 @@ public class NewChannel extends JFrame {
             }
         });
     }
+
     public String getValueFromChannel(String valuefromchannel) {
         System.out.print(valuefromchannel);
         return valuefromchannel;
     }
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         NewChannel nc = new NewChannel();
     }
 }
