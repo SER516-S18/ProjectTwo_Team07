@@ -31,7 +31,7 @@ public class ClientConsole {
     private static JLabel consoleLabel = new JLabel();
     private static JScrollPane consoleScroller = new JScrollPane(
     						  consoleDisplay);
-    	private static JPanel consolePanel = null;
+    private static JPanel consolePanel = null;
     private final static Logger LOGGER = Logger.getLogger(
     					 ClientConsole.class.getName());
     private final static String CONTENT_TYPE = "text/html";
@@ -92,8 +92,8 @@ public class ClientConsole {
      */
     private static void constructConsolePanel() {
     	
-		consolePanel = new JPanel();
-		consolePanel.setBackground(Constants.COLOR_GRAY);
+	consolePanel = new JPanel();
+	consolePanel.setBackground(Constants.COLOR_GRAY);
         consolePanel.setBorder(javax.swing.BorderFactory
         		.createLineBorder(Constants.COLOR_GRAY));
         consolePanel.setPreferredSize(new Dimension(40, 80));
