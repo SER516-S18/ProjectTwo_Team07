@@ -8,6 +8,7 @@ import network.Request;
 import network.Response;
 import util.Constants;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -25,9 +26,12 @@ public class ClientConnection {
 	private Client client;
 	private ClientData clientData;
 	ClientPlotGraph graphPlot = new ClientPlotGraph();
+	ClientDataPanel cdpanel;
+
 	public ClientConnection() {
 		clientData = new ClientData();
 		client = new Client();
+		cdpanel = new ClientDataPanel();
 	}
 
 	private void setListener(int channels) {
@@ -45,6 +49,11 @@ public class ClientConnection {
 							+ " Min is: " + clientData.getMin()
 							+ " Average is: " + clientData.getAverage()
 							+ " Frequency is: " + response.getFrequency());
+
+					cdpanel.setAverage((int) clientData.getAverage());
+					cdpanel.setFrequency(response.getFrequency());
+					cdpanel.setMax(clientData.getMax());
+					cdpanel.setMin(clientData.getMin());
 				}
 			}
 		});
@@ -70,6 +79,10 @@ public class ClientConnection {
 
 	public double getAverage() {
 		return clientData.getAverage();
+	}
+
+	public JPanel getClientDataPanel() {
+		return cdpanel.getClientDataPanel();
 	}
 
 	public boolean start(int channels) {

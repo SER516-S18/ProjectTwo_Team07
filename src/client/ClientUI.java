@@ -58,8 +58,6 @@ public class ClientUI extends JPanel {
         clientConnection = new ClientConnection();
         JFrame window = new JFrame();
 
-        ClientDataPanel cdpanel = new ClientDataPanel();
-        clientDataPanel = cdpanel.clientDataPanel;
         toggleBtn = new JButton("Start");
         toggleBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +93,7 @@ public class ClientUI extends JPanel {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 1;
         gbc.gridy = 1;
-        clientUIPanel.add(clientDataPanel, gbc);
+        clientUIPanel.add(clientConnection.getClientDataPanel(), gbc);
 
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 0;

@@ -167,13 +167,23 @@ public class ClientDataPanel extends JPanel {
         clientDataPanel.add(frequencyTxtFieldPanel, gbc);
     }
 
-    // public static void main(String[] args) {
-    //     JFrame window = new JFrame();
-    //     ClientDataPanel cdpanel = new ClientDataPanel();
-    //     window.add(cdpanel.clientDataPanel);
-    //     window.setSize(new Dimension(700, 700));
-    //     window.setVisible(true);
-    //     window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    // }
+    public JPanel getClientDataPanel() {
+        return clientDataPanel;
+    }
 
+    public void setAverage(int average) {
+        averageTxtfield.setText(String.valueOf(average));
+    }
+
+    public void setMax(int max) {
+        highestTxtField.setText(String.valueOf(max));
+    }
+
+    public void setMin(int min) {
+        lowestTxtField.setText(String.valueOf(min));
+    }
+
+    public void setFrequency(int frequency) {
+        frequencyTxtField.setText(String.valueOf(frequency));
+    }
 }
