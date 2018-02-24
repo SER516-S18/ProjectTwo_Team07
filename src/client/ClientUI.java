@@ -21,6 +21,15 @@ import javax.swing.JTextPane;
 import javax.swing.UIManager;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.data.time.Millisecond;
+import org.jfree.data.time.TimeSeries;
+import org.jfree.data.time.TimeSeriesCollection;
+import org.jfree.data.xy.XYDataset;
 
 import util.Constants;
 
@@ -70,10 +79,20 @@ public class ClientUI extends JPanel {
         clientUIPanel.setSize(new Dimension(600, 800));
 
         plotPanel = new JPanel(new BorderLayout());
-        JButton placeHolderBtn = new JButton("Placeholder for Plot");
+        ClientPlotGraph graphPlot = new ClientPlotGraph();
+//        NewChannel channel  = new NewChannel();
+        graphPlot = new ClientPlotGraph();
+        System.out.println(new ClientData().getChannelData());
+        ChartPanel chartPanel = graphPlot.drawGraph(4,new ClientData().getChannelData());
+        plotPanel.add(chartPanel);
+
         plotPanel.setSize(250, 250);
-        plotPanel.add(placeHolderBtn);
+
+        plotPanel.setVisible(true);
         plotPanel.setBackground(Constants.COLOR_PINK);
+        consolePanel = ClientConsole.getConsolePanel();
+
+
 
         consolePanel = ClientConsole.getConsolePanel();
 

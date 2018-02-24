@@ -46,7 +46,7 @@ public class ClientConnection {
 					Response response = (Response) object;
 					System.out.println("A response from the server: " + Arrays.toString(response.getChannelNumbers()));
 					//Called to plot the data sent by the server
-					setGraph(channels) ;
+//					setGraph(channels) ;
 					clientData.addChannelData(response.getChannelNumbers());
 					System.out.println(
 							"Max is: " + clientData.getMax()
@@ -62,24 +62,6 @@ public class ClientConnection {
 			}
 		});
 	}
-
-	/**
-	 * Starts an empty graph with the number of channels
-	 *
-	 * @param channels 		the number of channels
-	 */
-	public void initGraph(int channels) {
-    	graphPlot.drawGraph(channels);
-   	}
-
-	/**
-	 * Called when number of channels changes, resets the channel data
-	 *
-	 * @param channels 		the number of channels
-	 */
-	public void setGraph(int channels) {
-    	graphPlot.plotGraph(channels, clientData.getChannelData());
-    }
 
 
 	/**
@@ -126,7 +108,7 @@ public class ClientConnection {
 
 			Register.register(client);
 			// called to render the initial graph
-			initGraph(channels);
+//			initGraph(channels);
 			setListener(channels);
 		}
 		return true;
