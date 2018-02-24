@@ -13,7 +13,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
-import java.awt.Font;
 import javax.swing.border.EtchedBorder;
 
 public class ServerUI {
@@ -22,19 +21,18 @@ public class ServerUI {
 	private JTextField HighestTextField;
 	private JTextField LowestValueText;
 	private JTextField frequencyValueText;
-	private JTextPane consoletextPane = new JTextPane();
-
+	
 	/**
 	 * Create the application.
 	 */
 	public ServerUI() {
-		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @wbp.parser.entryPoint
 	 */
-	private void initialize() {
+	public void initialize() {
 		JFrame = new JFrame();
 		JFrame.setBounds(new Rectangle(20, 10, 400, 400));
 		JFrame.getContentPane().setBackground(new Color(135, 206, 250));
@@ -129,26 +127,16 @@ public class ServerUI {
 		plotPanel.setBackground(Color.PINK);
 		plotPanel.setBounds(26, 16, 457, 324);
 		controlPanel.add(plotPanel);
-		
-		consoletextPane.setBorder(new LineBorder(Color.BLUE));
-		consoletextPane.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		consoletextPane.setEditable(false);
-		consoletextPane.setContentType("text/html");
-		consoletextPane.setForeground(Color.BLACK);
-		consoletextPane.setBackground(Color.LIGHT_GRAY);
-		consoletextPane.setBounds(28, 459, 834, 157);
+				
+		JTextPane consoletextPane = (JTextPane) ServerConsole.getConsolePane();
 		JFrame.getContentPane().add(consoletextPane);
-		
+				
 		JLabel lblConsole = new JLabel("Console:");
 		lblConsole.setBounds(28, 443, 61, 14);
 		JFrame.getContentPane().add(lblConsole);
 		
 		JFrame.setVisible(true);
-        JFrame.setResizable(false);
-	}
-	
-	public JTextPane getConsolePane()
-	{
-		return consoletextPane;
+        	JFrame.setResizable(false);
+        
 	}
 }
