@@ -73,7 +73,7 @@ public class ClientConnection {
 			try {
 				client.connect(Constants.TIMEOUT, Constants.HOST, Constants.TCP_PORT);
 			} catch (IOException e) {
-				e.printStackTrace();
+				System.out.println("Cannot connect, Server is not up.");
 			}
 
 			Register.register(client);
