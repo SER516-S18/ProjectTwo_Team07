@@ -66,6 +66,10 @@ public class ClientConnection {
 		client.sendTCP(request);
 	}
 
+	public double getAverage() {
+		return clientData.getAverage();
+	}
+
 	public void start(int channels) {
 		if(!client.isConnected()) {
 			client.start();
