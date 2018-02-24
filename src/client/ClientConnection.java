@@ -38,7 +38,7 @@ public class ClientConnection {
 					Response response = (Response) object;
 					System.out.println("A response from the server: " + Arrays.toString(response.getChannelNumbers()));
 					//Called to plot the data sent by the server
-					setGraph(channels, response.getFrequency()) ;
+					setGraph(channels) ;
 					clientData.addChannelData(response.getChannelNumbers());
 					System.out.println(
 							"Max is: " + clientData.getMax()
@@ -53,8 +53,8 @@ public class ClientConnection {
     	graphPlot.drawGraph(channels);
    	}
 	
-	public void setGraph(int channels,int frequency) {
-    	graphPlot.plotGraph(channels, frequency,clientData.getChannelData());
+	public void setGraph(int channels) {
+    	graphPlot.plotGraph(channels, clientData.getChannelData());
     }
 	// called when the number of channels changes
 	public void setNumChannels(int channels) {
