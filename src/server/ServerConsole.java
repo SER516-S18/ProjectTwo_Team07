@@ -11,6 +11,13 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
+/**
+ * ServerConsole class to display error and success message
+ *
+ * @author Team 7
+ * @version 1.0
+ */
+
 public class ServerConsole {
 
 	private final static Logger LOGGER = Logger.getLogger(ServerConsole.class.getName());
