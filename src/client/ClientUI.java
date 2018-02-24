@@ -113,14 +113,14 @@ public class ClientUI extends JPanel {
     private void setStatusButtonClick(java.awt.event.ActionEvent evt) {
         if (!clientActiveFlag) {
             try {
-                if(clientConnection.start(4)){
-                    clientActiveFlag = true;
-                    clientConnection.setNumChannels(4);
-                    //ClientGraphPlotter.startGraphPlotting();
-                    ClientConsole.setMessage("Starting client...");
-                    toggleBtn.setText("Stop");
-                } else{
-                    ClientConsole.setMessage("Server not connected. Cannot start client..");
+                if(clientConnection.setNumChannels(4)){
+                clientActiveFlag = true;
+                //ClientGraphPlotter.startGraphPlotting();
+                ClientConsole.setMessage("Starting client...");
+                toggleBtn.setText("Stop");
+                }
+                else{
+                    ClientConsole.setErrorMessage("Server not connected. Cannot start client..");
                 }
             } catch (Exception e) {
                 ClientConsole.setErrorMessage(e.getMessage());
@@ -133,4 +133,14 @@ public class ClientUI extends JPanel {
             toggleBtn.setText("Start");
         }
     }
+        // public static void main(String[] args) {
+        //         JFrame window = new JFrame();
+        //         ClientUI clientui = new ClientUI();
+        //         window.add(clientui.clientUIPanel);
+        //         window.pack();
+        //         window.setVisible(true);
+        //         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        // }
+
+
 }

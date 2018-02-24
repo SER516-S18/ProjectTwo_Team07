@@ -58,12 +58,14 @@ public class ClientConnection {
     	graphPlot.plotGraph(channels, clientData.getChannelData());
     }
 	// called when the number of channels changes
-	public void setNumChannels(int channels) {
+	public boolean setNumChannels(int channels) {
+	    boolean isServerActive = false;
 		if(!client.isConnected()) {
-			start(channels);
+			isServerActive=start(channels);
 		}
 		Request request = new Request(channels);
 		client.sendTCP(request);
+		return isServerActive;
 	}
 
 	public double getAverage() {
@@ -82,13 +84,11 @@ public class ClientConnection {
 			}
 
 			Register.register(client);
-			setListener(channels);
-
 			//Called to render the initial graph
 			initGraph(channels);
-			return true;
+			setListener(channels);
 		}
-		return false;
+		return true;
 	}
 
 	// ends client session
