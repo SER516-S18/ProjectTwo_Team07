@@ -37,6 +37,7 @@ public class ClientConnection {
 				if (object instanceof Response) {
 					Response response = (Response) object;
 					System.out.println("A response from the server: " + Arrays.toString(response.getChannelNumbers()));
+					//Called to plot the data sent by the server
 					setGraph(channels, response.getFrequency()) ;
 					clientData.addChannelData(response.getChannelNumbers());
 					System.out.println(
@@ -47,9 +48,11 @@ public class ClientConnection {
 			}
 		});
 	}
+	
 	public void initGraph(int channels) {
     	graphPlot.drawGraph(channels);
-    }
+   	}
+	
 	public void setGraph(int channels,int frequency) {
     	graphPlot.plotGraph(channels, frequency,clientData.getChannelData());
     }
@@ -73,6 +76,7 @@ public class ClientConnection {
 			}
 
 			Register.register(client);
+			//Called to render the initial graph
 			initGraph(channels);
 			setListener(channels);
 		}
