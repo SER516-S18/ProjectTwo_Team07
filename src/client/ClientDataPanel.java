@@ -7,8 +7,6 @@ import java.awt.GridBagLayout;
 import java.awt.Component;
 
 import javax.swing.*;
-import javax.swing.WindowConstants;
-
 
 import util.Constants;
 

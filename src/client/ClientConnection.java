@@ -25,13 +25,14 @@ public class ClientConnection {
 
 	private Client client;
 	private ClientData clientData;
-	ClientPlotGraph graphPlot = new ClientPlotGraph();
-	ClientDataPanel cdpanel;
+	private ClientPlotGraph  graphPlot;
+	private ClientDataPanel cdpanel;
 
 	public ClientConnection() {
 		clientData = new ClientData();
 		client = new Client();
 		cdpanel = new ClientDataPanel();
+		graphPlot = new ClientPlotGraph();
 	}
 
 	/**
@@ -95,13 +96,6 @@ public class ClientConnection {
 		Request request = new Request(channels);
 		client.sendTCP(request);
 		return isServerActive;
-	}
-
-	/**
-	 * Get the average from all the channel data
-	 */
-	public double getAverage() {
-		return clientData.getAverage();
 	}
 
 	public JPanel getClientDataPanel() {

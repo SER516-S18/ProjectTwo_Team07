@@ -21,7 +21,6 @@ import org.jfree.data.xy.XYDataset;
 public class ClientPlotGraph extends JFrame {
 	private static final long serialVersionUID = 1L;
 	TimeSeries[] graph;
-	ClientData data = new ClientData();
 	int channelCount=0;
 	private static JFreeChart chart;
 	private static ChartPanel chartPanel;
