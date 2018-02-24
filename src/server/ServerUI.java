@@ -36,7 +36,8 @@ public class ServerUI {
 
 	/**
 	 * Initialize the contents of the frame.
-	 * @wbp.parser.entryPoint
+	   Creates the server interface by adding components to the server frame.
+	 * 
 	 */
 	public void initialize() {
 		JFrame = new JFrame();
@@ -151,6 +152,12 @@ public class ServerUI {
         	JFrame.setResizable(false);
         
 	}
+	
+	
+	/**
+	* The function start and stops the server connection on click on startStopNtn. The serverActive flag get set to true if  
+	* server is active and get set to false, otherwise.
+	*/
 
 	private void startStopBtnClick(java.awt.event.ActionEvent evt){
 		if(!serverActiveFlag){
