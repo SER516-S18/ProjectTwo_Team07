@@ -91,23 +91,11 @@ public class ClientData {
         return max;
     }
 
-    public void setMax(int max) {
-        this.max = max;
-    }
-
     public int getMin() {
         return min;
     }
 
-    public void setMin(int min) {
-        this.min = min;
-    }
-
     public double getAverage() {
         return average;
-    }
-
-    public void setAverage(double average) {
-        this.average = average;
     }
 }
