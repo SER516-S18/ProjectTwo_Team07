@@ -12,17 +12,7 @@ package server;
 public class ServerMain {
 
     public static void main(String[] args) {
-        ServerConnection serverConnection = new ServerConnection();
-        serverConnection.start();
-        serverConnection.setFrequency(3);
-        serverConnection.setMax(100);
-        serverConnection.setMin(2);
-        
-         new ServerUI();
          ServerUI serverUI = new ServerUI();
          serverUI.initialize();
-      //   ServerConsole serverConsole = new ServerConsole();
- 	//	serverConsole.setErrorMessage("This is dummy error");
- 	//	serverConsole.setMessage("Hello world..");
     }
 }

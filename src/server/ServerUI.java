@@ -21,7 +21,10 @@ public class ServerUI {
 	private JTextField HighestTextField;
 	private JTextField LowestValueText;
 	private JTextField frequencyValueText;
-	
+	private JButton startStopBtn;
+	private boolean serverActiveFlag;
+	ServerConnection serverConnection;
+
 	/**
 	 * Create the application.
 	 */
@@ -40,13 +43,17 @@ public class ServerUI {
 		JFrame.setAutoRequestFocus(false);
 		JFrame.setBounds(200, 100, 886, 700);
 		JFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		JButton startStopBtn = new JButton("Start/Stop");
+		serverActiveFlag = false;
+		serverConnection = new ServerConnection();
+
+
+		startStopBtn = new JButton("Start");
 		startStopBtn.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		startStopBtn.setBounds(694, 16, 115, 29);
 		startStopBtn.setForeground(Color.BLACK);
 		startStopBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				startStopBtnClick(arg0);
 			}
 		});
 		JFrame.getContentPane().setLayout(null);
@@ -138,5 +145,31 @@ public class ServerUI {
 		JFrame.setVisible(true);
         	JFrame.setResizable(false);
         
+	}
+
+	private void startStopBtnClick(java.awt.event.ActionEvent evt){
+		if(!serverActiveFlag){
+			serverActiveFlag = true;
+			try{
+				serverConnection.start();
+				serverConnection.setFrequency(3);
+				serverConnection.setMax(100);
+				serverConnection.setMin(2);
+			}catch (Exception e){
+				ServerConsole.setErrorMessage(e.getMessage());
+			}
+			//ServerStatus.startBlinking();
+			ServerStatus.startMessage();
+			ServerConsole.setMessage("Starting server...");
+			startStopBtn.setText("Stop");
+		}
+		else{
+			serverActiveFlag = false;
+			serverConnection.stop();
+			//ServerStatus.stopBlinking();
+			ServerConsole.setMessage("Stopping server...");
+			serverConnection.stop();
+			startStopBtn.setText("Start");
+		}
 	}
 }
