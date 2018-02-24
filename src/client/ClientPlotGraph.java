@@ -14,8 +14,8 @@ import org.jfree.data.xy.XYDataset;
 
 public class ClientPlotGraph extends JFrame {
 	/**
-	 * GraphPlot plots data as line graphs based on the number of channels set by the server.
-	 * The graph is plotted in the frequency set.
+	 * GraphPlot creates and plots data as line graphs based on the number of channels 
+	 * and frequency set by the server.
 	 */
 	private static final long serialVersionUID = 1L;
 	TimeSeries[] graph;
