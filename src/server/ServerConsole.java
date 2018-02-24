@@ -15,23 +15,28 @@ public class ServerConsole {
 
 	private final static Logger LOGGER = Logger.getLogger(ServerConsole.class.getName());
 	private static JTextPane consoletextPane = null;
-    private final static String CONTENT_TYPE = "text/html";
-	
+	private final static String CONTENT_TYPE = "text/html";
+
 	public ServerConsole() {
-	
+
 	}
-	
+	/**
+	 * 
+	 * @param errorMessage 
+	 */
+
 	public static void setErrorMessage(String errorMessage) {
 
-		consoletextPane.setContentType(CONTENT_TYPE);
-		StyledDocument doc = (StyledDocument) consoletextPane.getDocument();
-		SimpleAttributeSet keyWord = new SimpleAttributeSet();
-		StyleConstants.setForeground(keyWord, Color.RED);
-		StyleConstants.setFontFamily(keyWord, "Times New Roman");
-		StyleConstants.setFontSize(keyWord, 9);
-		StyleConstants.setBackground(keyWord, Color.LIGHT_GRAY);
 		try
 		{
+			consoletextPane.setContentType(CONTENT_TYPE);
+			StyledDocument doc = (StyledDocument) consoletextPane.getDocument();
+			SimpleAttributeSet keyWord = new SimpleAttributeSet();
+			StyleConstants.setForeground(keyWord, Color.RED);
+			StyleConstants.setFontFamily(keyWord, "Times New Roman");
+			StyleConstants.setFontSize(keyWord, 9);
+			StyleConstants.setBackground(keyWord, Color.LIGHT_GRAY);
+
 			doc.insertString(0,new Date()+" - Error - "+errorMessage +"\n",keyWord );
 		}
 		catch(Exception ex) 
@@ -41,6 +46,10 @@ public class ServerConsole {
 
 	}
 
+	/**
+	 * 
+	 * @param message
+	 */
 	public static void setMessage(String message) {
 		try {
 			consoletextPane.setContentType(CONTENT_TYPE);
@@ -55,20 +64,26 @@ public class ServerConsole {
 			LOGGER.log(Level.SEVERE,"Exception while adding Message", ex);
 		}
 	}
-	
+
+	/**
+	 * Creating Text Pane for console.
+	 */
 	private static void constructConsolePanel()
 	{
 		consoletextPane = new JTextPane();
 		consoletextPane.setBorder(new LineBorder(Color.BLUE));
 		consoletextPane.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		consoletextPane.setEditable(false);
-		//consoletextPane.setContentType("text/html");
 		consoletextPane.setForeground(Color.BLACK);
 		consoletextPane.setBackground(Color.LIGHT_GRAY);
 		consoletextPane.setBounds(28, 459, 834, 157);
-		
+
 	}
-	
+
+	/**
+	 * 
+	 * @return Text Pane with or without updated Message.
+	 */
 	public static JTextPane getConsolePane()
 	{
 		if(consoletextPane == null)
@@ -77,7 +92,7 @@ public class ServerConsole {
 		}
 		return consoletextPane;
 	}
-	
+
 }
 
 
