@@ -12,11 +12,13 @@ import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
 
+/**
+ * GraphPlot creates and plots data as line graphs based on the number of channels 
+ * and frequency set by the server.
+ *
+ * @author team7
+ */
 public class ClientPlotGraph extends JFrame {
-	/**
-	 * GraphPlot creates and plots data as line graphs based on the number of channels 
-	 * and frequency set by the server.
-	 */
 	private static final long serialVersionUID = 1L;
 	TimeSeries[] graph;
 	ClientData data = new ClientData();
