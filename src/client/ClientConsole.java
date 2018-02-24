@@ -30,10 +30,10 @@ public class ClientConsole {
     private static JTextPane consoleDisplay = new JTextPane();
     private static JLabel consoleLabel = new JLabel();
     private static JScrollPane consoleScroller = new JScrollPane(
-    												consoleDisplay);
+    						  consoleDisplay);
     	private static JPanel consolePanel = null;
     private final static Logger LOGGER = Logger.getLogger(
-    										ClientConsole.class.getName());
+    					 ClientConsole.class.getName());
     private final static String CONTENT_TYPE = "text/html";
 
     /**
