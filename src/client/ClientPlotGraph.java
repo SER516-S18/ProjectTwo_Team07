@@ -51,7 +51,7 @@ public class ClientPlotGraph extends JFrame {
 		plot.setRangeGridlinesVisible(false);
 		ValueAxis xaxis = plot.getDomainAxis();
 		xaxis.setAutoRange(true);
-		//xaxis.setFixedAutoRange(channelCount*500); 
+		xaxis.setFixedAutoRange(channelCount*500); 
 		xaxis.setVerticalTickLabels(false);
 		xaxis.setTickLabelsVisible(false);
 		ValueAxis yaxis = plot.getDomainAxis();
@@ -60,7 +60,7 @@ public class ClientPlotGraph extends JFrame {
 		return result;
 	}
 	//plots the graphs to the chart panel
-	public void plotGraph(int channels, int frequency, Map<Integer, List<Integer>> dataMap) {
+	public void plotGraph(int channels, Map<Integer, List<Integer>> dataMap) {
 		if(!dataMap.isEmpty())
 		{
 			for(int channel=0;channel<channels;channel++) {
