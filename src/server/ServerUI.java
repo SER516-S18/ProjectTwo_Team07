@@ -9,6 +9,15 @@ import java.awt.Component;
 import javax.swing.border.LineBorder;
 import javax.swing.border.EtchedBorder;
 
+/**
+ * ServerUI Class to generate user interface as per the user requirements
+ *
+ * @author team 7
+ * @version 1.0
+ * @since 2018-02-23
+ * 
+ */
+
 public class ServerUI {
 
 	private JFrame JFrame;
