@@ -13,7 +13,7 @@ import java.util.Arrays;
 
 /**
  * ClientConnection
- * <p>
+ *
  * Creates socket client connection and sends requests to the server
  * and handles responses.
  *
@@ -22,62 +22,65 @@ import java.util.Arrays;
  */
 public class ClientConnection {
 
-    private Client client;
-    private ClientData clientData;
+	private Client client;
+	private ClientData clientData;
+	ClientPlotGraph graphPlot = new ClientPlotGraph();
+	public ClientConnection() {
+		clientData = new ClientData();
+		client = new Client();
+	}
 
-    public ClientConnection() {
-        clientData = new ClientData();
-        client = new Client();
+	private void setListener(int channels) {
+		// listens for messages from the server
+		client.addListener(new Listener() {
+			public void received (Connection connection, Object object) {
+				if (object instanceof Response) {
+					Response response = (Response) object;
+					System.out.println("A response from the server: " + Arrays.toString(response.getChannelNumbers()));
+					setGraph(channels, response.getFrequency()) ;
+					clientData.addChannelData(response.getChannelNumbers());
+					System.out.println(
+							"Max is: " + clientData.getMax()
+							+ " Min is: " + clientData.getMin()
+							+ " Frequency is: " + response.getFrequency());
+				}
+			}
+		});
+	}
+	public void initGraph(int channels) {
+    	graphPlot.drawGraph(channels);
     }
-
-    private void setListener() {
-        // listens for messages from the server
-        client.addListener(new Listener() {
-            public void received(Connection connection, Object object) {
-                if (object instanceof Response) {
-                    Response response = (Response) object;
-
-                    System.out.println("A response from the server: " + Arrays.toString(response.getChannelNumbers()));
-
-                    clientData.addChannelData(response.getChannelNumbers());
-
-                    System.out.println(
-                            "Max is: " + clientData.getMax()
-                                    + " Min is: " + clientData.getMin()
-                                    + " Average is: " + clientData.getAverage()
-                                    + " Frequency is: " + response.getFrequency());
-                }
-            }
-        });
+	public void setGraph(int channels,int frequency) {
+    	graphPlot.plotGraph(channels, frequency,clientData.getChannelData());
     }
+	// called when the number of channels changes
+	public void setNumChannels(int channels) {
+		if(!client.isConnected()) {
+			start(channels);
+		}
+		Request request = new Request(channels);
+		client.sendTCP(request);
+	}
 
-    // called when the number of channels changes
-    public void setNumChannels(int channels) {
-        if (!client.isConnected()) {
-            start();
-        }
-        Request request = new Request(channels);
-        client.sendTCP(request);
-    }
+	public void start(int channels) {
+		if(!client.isConnected()) {
+			client.start();
 
-    public void start() {
-        if (!client.isConnected()) {
-            client.start();
+			try {
+				client.connect(Constants.TIMEOUT, Constants.HOST, Constants.TCP_PORT);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 
-            try {
-                client.connect(Constants.TIMEOUT, Constants.HOST, Constants.TCP_PORT);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+			Register.register(client);
+			initGraph(channels);
+			setListener(channels);
+		}
+	}
 
-            Register.register(client);
-            setListener();
-        }
-    }
-
-    // ends client session
-    public void stop() {
-        client.close();
-        client.stop();
-    }
+	// ends client session
+	public void stop() {
+		client.close();
+		client.stop();
+	}
 }
