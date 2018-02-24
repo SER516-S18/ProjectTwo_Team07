@@ -16,6 +16,9 @@ public class ServerData {
     private int max;
     private int min;
 
+    /**
+     * constructor to initialize serverData objects
+     */
     public ServerData() {
         this.frequency = 0;
         this.max = 0;

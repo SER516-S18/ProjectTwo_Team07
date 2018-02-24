@@ -77,6 +77,9 @@ public class ClientDataPanel extends JPanel {
         return txtFieldPanel;
     }
 
+    /**
+     * constructor to initialize the default values
+     */
     public ClientDataPanel() {
         GridBagLayout grid = new GridBagLayout();
         GridBagConstraints gbc = new GridBagConstraints();
@@ -165,6 +168,10 @@ public class ClientDataPanel extends JPanel {
         clientDataPanel.add(frequencyTxtFieldPanel, gbc);
     }
 
+    /**
+     * returns the clientDataPanel
+     * @return
+     */
     public JPanel getClientDataPanel() {
         return clientDataPanel;
     }

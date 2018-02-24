@@ -26,7 +26,7 @@ public class ServerConsole {
 	public ServerConsole() {}
 
 	/**
-	 * 
+	 *  Sets the layout of error messages
 	 * @param errorMessage 
 	 */
 	public static void setErrorMessage(String errorMessage) {
@@ -51,7 +51,7 @@ public class ServerConsole {
 	}
 
 	/**
-	 * 
+	 * sets the layout for normal messages
 	 * @param message
 	 */
 	public static void setMessage(String message) {

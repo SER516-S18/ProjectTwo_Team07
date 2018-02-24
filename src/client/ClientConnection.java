@@ -28,6 +28,9 @@ public class ClientConnection {
 	private ClientPlotGraph  graphPlot;
 	private ClientDataPanel cdpanel;
 
+	/**
+	 * constructor to initialize default value
+	 */
 	public ClientConnection() {
 		clientData = new ClientData();
 		client = new Client();
@@ -46,8 +49,6 @@ public class ClientConnection {
 				if (object instanceof Response) {
 					Response response = (Response) object;
 					System.out.println("A response from the server: " + Arrays.toString(response.getChannelNumbers()));
-					//Called to plot the data sent by the server
-//					setGraph(channels) ;
 					clientData.addChannelData(response.getChannelNumbers());
 					System.out.println(
 							"Max is: " + clientData.getMax()
@@ -80,6 +81,11 @@ public class ClientConnection {
 		return isServerActive;
 	}
 
+	/**
+	 * get clientDataPanel
+	 *
+	 * @return
+	 */
 	public JPanel getClientDataPanel() {
 		return cdpanel.getClientDataPanel();
 	}
@@ -101,8 +107,6 @@ public class ClientConnection {
 			}
 
 			Register.register(client);
-			// called to render the initial graph
-//			initGraph(channels);
 			setListener(channels);
 		}
 		return true;

@@ -10,7 +10,10 @@ package server;
  * @version 1.0
  */
 public class ServerMain {
-
+    /**
+     * Starts the server UI
+     * @param args
+     */
     public static void main(String[] args) {
          ServerUI serverUI = new ServerUI();
          serverUI.initialize();

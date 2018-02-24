@@ -12,7 +12,11 @@ import java.io.IOException;
  * @version 1.0
  */
 public class ClientMain {
-
+    /**
+     * Starts the client UI
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         ClientUI clientui = new ClientUI();
     }

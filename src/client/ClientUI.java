@@ -40,6 +40,11 @@ public class ClientUI extends JPanel {
     private boolean clientActiveFlag;
     ClientConnection clientConnection;
 
+    /**
+     * Creates top Panel
+     * @param toggleBtn
+     * @return
+     */
     private static JPanel createTopPanel(JButton toggleBtn) {
         JPanel toggleBtnPanel = new JPanel(new BorderLayout());
         toggleBtnPanel.setPreferredSize(lblPreferredSize);
@@ -72,7 +77,6 @@ public class ClientUI extends JPanel {
 
         plotPanel = new JPanel(new BorderLayout());
         ClientPlotGraph graphPlot = new ClientPlotGraph();
-//        NewChannel channel  = new NewChannel();
         graphPlot = new ClientPlotGraph();
         System.out.println(new ClientData().getChannelData());
         ChartPanel chartPanel = graphPlot.drawGraph(4,new ClientData().getChannelData());
@@ -118,7 +122,7 @@ public class ClientUI extends JPanel {
 
     /**
      * Starts the status button
-     *
+     * @param evt
      */
     private void setStatusButtonClick(java.awt.event.ActionEvent evt) {
         if (!clientActiveFlag) {

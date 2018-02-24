@@ -25,6 +25,9 @@ public class ServerConnection {
     private Server server;
     private ServerData serverData;
 
+    /**
+     * constructor to initialize server client connection
+     */
     public ServerConnection() {
         serverData = new ServerData();
         server = new Server();

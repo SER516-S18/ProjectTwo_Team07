@@ -26,8 +26,6 @@ public class ServerStatus extends JPanel {
 
     /**
      * ServerStatus is updated after very 500ms whenever object is created
-     *
-     *
      */
     public ServerStatus() {
         this.blinkAnimation = new Timer(BLINK_INTERVAL, event -> {
@@ -39,8 +37,6 @@ public class ServerStatus extends JPanel {
 
     /**
      * Blinker value sets to
-     *
-     *
      *
      * @param
      *            - Server status flag
@@ -54,6 +50,9 @@ public class ServerStatus extends JPanel {
         this.repaint();
     }
 
+    /**
+     * Stops the blinker
+     */
     public void stopBlinking()
     {
         System.out.print(" Stop ---- 12334");
@@ -87,14 +86,9 @@ public class ServerStatus extends JPanel {
 
     public static void stopMessage(){
         if(!isServerRunning(8080)){
-//	            JLabel nj  = new JLabel();
-//	            nj.setText("Not Running....");
-//	            pPanel.add(nj);
-//	            System.out.println("Not Running");
         }
     }
     public static boolean isServerRunning(int port) {
-        // int port=8080;
         ServerSocket server_socket = null;
         DatagramSocket datagram_socket = null;
         try {

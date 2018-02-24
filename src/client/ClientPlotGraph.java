@@ -30,7 +30,12 @@ public class ClientPlotGraph extends JFrame implements ActionListener {
 	private Timer refresher;
 	ClientData clientData;
 
-	//creates the line graphs equivalent to channels and returns chart panel.
+	/**
+	 * Initializes the graph and sets the layout
+	 * @param channels
+	 * @param dataMap1
+	 * @return
+	 */
 	public ChartPanel drawGraph(int channels, Map<Integer, List<Integer>> dataMap1) {
 		refresher = new Timer(250, this);
 		graph=new TimeSeries[channels];
@@ -40,7 +45,6 @@ public class ClientPlotGraph extends JFrame implements ActionListener {
 			graph[channel] = new TimeSeries("Channel "+channel);
 			dataset.addSeries(graph[channel]);
 		}
-
 		chart = createChart(dataset);
 
 		chartPanel = new ChartPanel(chart);
@@ -48,7 +52,10 @@ public class ClientPlotGraph extends JFrame implements ActionListener {
 
 		return chartPanel;
 	}
-	//define the initial layout of the graph and returns chart
+
+	/**
+	 * define the initial layout of the graph and returns chart
+	 */
 	private JFreeChart createChart(final XYDataset dataset) {
 		final JFreeChart result = ChartFactory.createTimeSeriesChart(
 				"Graph Plot", "", "", dataset, true, true, true);
@@ -67,11 +74,12 @@ public class ClientPlotGraph extends JFrame implements ActionListener {
 		return result;
 	}
 
+	/**
+	 * action listener for refresher
+	 * @param e
+	 */
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("Action");
 		for (int channel = 0; channel < channelCount; channel++) {
-			//int x = dataMap.get(channel).size();
-			//int y = dataMap.get(channel).get(x - 1);
 			factor = 100*Math.random();
 			System.out.println("Plotting number.. " + factor);
 			this.graph[channel].add(new Millisecond(), channel*factor);

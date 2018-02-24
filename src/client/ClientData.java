@@ -20,6 +20,9 @@ public class ClientData {
     private double average;
     private Map<Integer, List<Integer>> channelData;
 
+    /**
+     * constructor to initialize default value
+     */
     public ClientData() {
         this.max = 0;
         this.average = 0;
@@ -33,7 +36,6 @@ public class ClientData {
      * @param randomChannelNumbers - collection of random numbers from the server
      */
     public void addChannelData(int[] randomChannelNumbers) {
-        // if the number of channels was changed the clients channel data will restart
         if (randomChannelNumbers.length != channelData.size()) {
             channelData.clear();
             max = 0;
@@ -79,6 +81,10 @@ public class ClientData {
         return channelData;
     }
 
+    /**
+     * It will initialize and verify the maximum and minimum value
+     * @param sample
+     */
     private void verifyMaxMin(int sample) {
         if (sample > max) {
             max = sample;
