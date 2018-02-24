@@ -18,9 +18,10 @@ import javax.swing.text.html.HTMLDocument;
 import util.Constants;
 
 /**
- * A class to handle displaying message and error message in the client console
+ * ClientConsole class to handle displaying message and error message in the client console
  *
- * @author raamprashanthns
+ *
+ * @author team 7
  * @version 1
  */
 public class ClientConsole {
