@@ -1,7 +1,6 @@
 package server;
 
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Font;
 import java.util.Date;
 import java.util.logging.Level;
@@ -29,6 +28,7 @@ public class ServerConsole {
 		SimpleAttributeSet keyWord = new SimpleAttributeSet();
 		StyleConstants.setForeground(keyWord, Color.RED);
 		StyleConstants.setFontFamily(keyWord, "Times New Roman");
+		StyleConstants.setFontSize(keyWord, 9);
 		StyleConstants.setBackground(keyWord, Color.LIGHT_GRAY);
 		try
 		{
@@ -48,6 +48,7 @@ public class ServerConsole {
 			SimpleAttributeSet keyWord = new SimpleAttributeSet();
 			StyleConstants.setForeground(keyWord, Color.BLACK);
 			StyleConstants.setFontFamily(keyWord, "Times New Roman");
+			StyleConstants.setFontSize(keyWord, 9);
 			StyleConstants.setBackground(keyWord, Color.LIGHT_GRAY);
 			doc.insertString(0,new Date()+"- Message - "+message+"\n",keyWord );
 		} catch (Exception ex) {
@@ -61,14 +62,14 @@ public class ServerConsole {
 		consoletextPane.setBorder(new LineBorder(Color.BLUE));
 		consoletextPane.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		consoletextPane.setEditable(false);
-		consoletextPane.setContentType("text/html");
+		//consoletextPane.setContentType("text/html");
 		consoletextPane.setForeground(Color.BLACK);
 		consoletextPane.setBackground(Color.LIGHT_GRAY);
 		consoletextPane.setBounds(28, 459, 834, 157);
 		
 	}
 	
-	public static Container getConsolePane()
+	public static JTextPane getConsolePane()
 	{
 		if(consoletextPane == null)
 		{	
