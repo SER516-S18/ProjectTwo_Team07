@@ -2,10 +2,6 @@
 
 ## Random Signal Generator (Client + Server) Implementation in Java
 
-### Project Workspace 
-
-    https://tree.taiga.io/project/idperez-ser-516-team-7/
-
 ### Team Members
 
 * Abhishek Parmar - 87

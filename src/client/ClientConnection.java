@@ -34,8 +34,12 @@ public class ClientConnection {
 		cdpanel = new ClientDataPanel();
 	}
 
+	/**
+	 * Sets a listener that waits for responses from the server
+	 *
+	 * @param channels 		the number of channels
+	 */
 	private void setListener(int channels) {
-		// listens for messages from the server
 		client.addListener(new Listener() {
 			public void received (Connection connection, Object object) {
 				if (object instanceof Response) {
@@ -58,26 +62,44 @@ public class ClientConnection {
 			}
 		});
 	}
-	
+
+	/**
+	 * Starts an empty graph with the number of channels
+	 *
+	 * @param channels 		the number of channels
+	 */
 	public void initGraph(int channels) {
     	graphPlot.drawGraph(channels);
    	}
-	
+
+	/**
+	 * Called when number of channels changes, resets the channel data
+	 *
+	 * @param channels 		the number of channels
+	 */
 	public void setGraph(int channels) {
     	graphPlot.plotGraph(channels, clientData.getChannelData());
     }
 
-	// called when the number of channels changes
+
+	/**
+	 * Alerts the server the number of channels has changed
+	 *
+	 * @param channels 		the number of channels
+	 */
 	public boolean setNumChannels(int channels) {
 	    boolean isServerActive = false;
 		if(!client.isConnected()) {
-			isServerActive=start(channels);
+			isServerActive = start(channels);
 		}
 		Request request = new Request(channels);
 		client.sendTCP(request);
 		return isServerActive;
 	}
 
+	/**
+	 * Get the average from all the channel data
+	 */
 	public double getAverage() {
 		return clientData.getAverage();
 	}
@@ -86,6 +108,11 @@ public class ClientConnection {
 		return cdpanel.getClientDataPanel();
 	}
 
+	/**
+	 * Starts the client connection
+	 *
+	 * @param channels 		the number of channels
+	 */
 	public boolean start(int channels) {
 		if(!client.isConnected()) {
 			client.start();
@@ -105,7 +132,9 @@ public class ClientConnection {
 		return true;
 	}
 
-	// ends client session
+	/**
+	 * Ends the connection to the server
+	 */
 	public void stop() {
 		client.close();
 		client.stop();
