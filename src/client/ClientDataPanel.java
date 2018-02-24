@@ -1,3 +1,4 @@
+package client;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -8,7 +9,6 @@ import java.awt.Component;
 import javax.swing.*;
 import javax.swing.WindowConstants;
 
-import com.sun.tools.internal.jxc.ap.Const;
 
 import util.Constants;
 

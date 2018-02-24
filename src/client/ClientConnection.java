@@ -43,6 +43,7 @@ public class ClientConnection {
 					System.out.println(
 							"Max is: " + clientData.getMax()
 							+ " Min is: " + clientData.getMin()
+							+ " Average is: " + clientData.getAverage()
 							+ " Frequency is: " + response.getFrequency());
 				}
 			}

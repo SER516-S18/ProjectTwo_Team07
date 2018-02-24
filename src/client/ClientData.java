@@ -53,7 +53,6 @@ public class ClientData {
         } else if (sample < min) {
             min = sample;
         }
-        average = (max + min) / 2;
     }
 
     public int getMax() {

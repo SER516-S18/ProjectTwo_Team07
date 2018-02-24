@@ -1,10 +1,11 @@
 package client;
 
+import javax.swing.*;
 import java.io.IOException;
 
 /**
  * Client
- *
+ * <p>
  * Client entry point.
  * Starts GUI and connection to server
  *
@@ -16,6 +17,13 @@ public class ClientMain {
     public static void main(String[] args) throws IOException {
         ClientConnection clientConnection = new ClientConnection();
         clientConnection.setNumChannels(4);
-        for(;;);
+        JFrame window = new JFrame();
+        ClientUI clientui = new ClientUI();
+        window.add(clientui.clientUIPanel);
+        window.pack();
+        window.setVisible(true);
+        window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        for (; ; ) ;
     }
 }
