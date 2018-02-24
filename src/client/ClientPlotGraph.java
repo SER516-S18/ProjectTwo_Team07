@@ -14,8 +14,8 @@ import org.jfree.data.xy.XYDataset;
 
 public class ClientPlotGraph extends JFrame {
 	/**
-	 * GraphPlot plots data as line graphs based on the number of channels.
-	 * The graph is plotted depending on the frequency set.
+	 * GraphPlot plots data as line graphs based on the number of channels set by the server.
+	 * The graph is plotted in the frequency set.
 	 */
 	private static final long serialVersionUID = 1L;
 	TimeSeries[] graph;
@@ -23,6 +23,8 @@ public class ClientPlotGraph extends JFrame {
 	int channelCount=0;
 	private static JFreeChart chart;
 	private static ChartPanel chartPanel;
+	
+	//creates the line graphs equivalent to channels and returns chart panel.
 	public ChartPanel drawGraph(int channels) {
 
 		graph=new TimeSeries[channels];
@@ -39,6 +41,7 @@ public class ClientPlotGraph extends JFrame {
 		chartPanel = new ChartPanel(chart);
 		return chartPanel;
 	}
+	//define the initial layout of the graph and returns chart
 	private JFreeChart createChart(final XYDataset dataset) {
 		final JFreeChart result = ChartFactory.createTimeSeriesChart(
 				"Graph Plot", "", "", dataset, true, true, true);
@@ -56,7 +59,7 @@ public class ClientPlotGraph extends JFrame {
 		yaxis.setTickLabelsVisible(false);
 		return result;
 	}
-
+	//plots the graphs to the chart panel
 	public void plotGraph(int channels, int frequency, Map<Integer, List<Integer>> dataMap) {
 		if(!dataMap.isEmpty())
 		{
