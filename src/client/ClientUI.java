@@ -27,22 +27,17 @@ import util.Constants;
 /**
  * This class contains methods to initiate User Interface
  *
- *
  * @author Team 7
  */
 public class ClientUI extends JPanel {
 
     private static JPanel plotPanel;
-    public static JPanel clientDataPanel;
     private static JPanel consolePanel;
-    private static JPanel clientTopPanel;
     public static JPanel clientUIPanel;
     private static JButton toggleBtn;
     private static Dimension lblPreferredSize = new Dimension(120, 42);
     private boolean clientActiveFlag;
     ClientConnection clientConnection;
-    JFrame window;
-
 
     private static JPanel createTopPanel(JButton toggleBtn) {
         JPanel toggleBtnPanel = new JPanel(new BorderLayout());
@@ -51,6 +46,10 @@ public class ClientUI extends JPanel {
         return toggleBtnPanel;
     }
 
+    /**
+     * Initializes UI components and starts client connection
+     *
+     */
     public ClientUI() {
         ClientConsole.setMessage("Initializing Client Modules...");
 
@@ -70,14 +69,12 @@ public class ClientUI extends JPanel {
         clientUIPanel = new JPanel(grid);
         clientUIPanel.setSize(new Dimension(600, 800));
 
-        // Replace with Plot Panel code
         plotPanel = new JPanel(new BorderLayout());
         JButton placeHolderBtn = new JButton("Placeholder for Plot");
         plotPanel.setSize(250, 250);
         plotPanel.add(placeHolderBtn);
         plotPanel.setBackground(Constants.COLOR_PINK);
 
-        // Replace with Console Panel code
         consolePanel = ClientConsole.getConsolePanel();
 
         gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -108,12 +105,15 @@ public class ClientUI extends JPanel {
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
+    /**
+     * Starts the status button
+     *
+     */
     private void setStatusButtonClick(java.awt.event.ActionEvent evt) {
         if (!clientActiveFlag) {
             try {
                 if(clientConnection.setNumChannels(4)){
                 clientActiveFlag = true;
-                //ClientGraphPlotter.startGraphPlotting();
                 ClientConsole.setMessage("Starting client...");
                 toggleBtn.setText("Stop");
                 }
@@ -125,20 +125,9 @@ public class ClientUI extends JPanel {
             }
         } else {
             clientActiveFlag = false;
-            //ClientGraphPlotter.stopGraphPlotting();
             ClientConsole.setMessage("Stopping client...");
             clientConnection.stop();
             toggleBtn.setText("Start");
         }
     }
-        // public static void main(String[] args) {
-        //         JFrame window = new JFrame();
-        //         ClientUI clientui = new ClientUI();
-        //         window.add(clientui.clientUIPanel);
-        //         window.pack();
-        //         window.setVisible(true);
-        //         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        // }
-
-
 }

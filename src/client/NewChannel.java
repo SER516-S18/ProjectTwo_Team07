@@ -5,6 +5,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Channel JFrame interface
+ *
+ * @author Team 7
+ */
 public class NewChannel extends JFrame {
     public String temp1;
     private String[] description = {"1", "2", "3", "4", "5", "6", "7", "8"};
@@ -29,6 +34,10 @@ public class NewChannel extends JFrame {
         });
     }
 
+    /**
+     *
+     * Return the value from the current channel
+     */
     public String getValueFromChannel(String valuefromchannel) {
         System.out.print(valuefromchannel);
         return valuefromchannel;

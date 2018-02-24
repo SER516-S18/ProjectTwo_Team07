@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * Client Data
- * <p>
+ *
  * Holds all of the clients data
  *
  * @author Team 7
@@ -27,6 +27,11 @@ public class ClientData {
         this.channelData = new HashMap<>();
     }
 
+    /**
+     * Appends to the channel map, new random channel numbers from the server
+     *
+     * @param randomChannelNumbers - collection of random numbers from the server
+     */
     public void addChannelData(int[] randomChannelNumbers) {
         // if the number of channels was changed the clients channel data will restart
         if (randomChannelNumbers.length != channelData.size()) {
@@ -49,6 +54,9 @@ public class ClientData {
         updateAverage();
     }
 
+    /**
+     * Updates the current average of all the channel numbers
+     */
     public void updateAverage() {
         int sum = 0;
         int numElements = 0;
@@ -64,6 +72,9 @@ public class ClientData {
         }
     }
 
+    /**
+     * @return The collection of channels and their numbers
+     */
     public Map<Integer, List<Integer>> getChannelData() {
         return channelData;
     }

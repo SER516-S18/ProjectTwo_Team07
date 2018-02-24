@@ -70,8 +70,8 @@ public class ClientDataPanel extends JPanel {
     }
 
     /*
-    Creates new JPanel to contain text fields for client data output
-    @param: JTextField txtField
+    *Creates new JPanel to contain text fields for client data output
+    * @param: JTextField txtField
     */
     private static JPanel createTxtFieldPanel(JTextField txtField) {
         JPanel txtFieldPanel = new JPanel(new BorderLayout());

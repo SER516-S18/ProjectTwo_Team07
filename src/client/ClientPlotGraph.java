@@ -25,8 +25,12 @@ public class ClientPlotGraph extends JFrame {
 	int channelCount=0;
 	private static JFreeChart chart;
 	private static ChartPanel chartPanel;
-	
-	// creates the line graphs equivalent to channels and returns chart panel.
+
+	/**
+	 * creates the line graphs equivalent to channels and returns chart panel.
+	 *
+	 * @param channels - number of channels
+	 */
 	public ChartPanel drawGraph(int channels) {
 
 		graph=new TimeSeries[channels];
@@ -44,7 +48,11 @@ public class ClientPlotGraph extends JFrame {
 		return chartPanel;
 	}
 
-	// define the initial layout of the graph and returns chart
+	/**
+	 * define the initial layout of the graph and returns chart.
+	 *
+	 * @param dataset - the initial data set for the graph
+	 */
 	private JFreeChart createChart(final XYDataset dataset) {
 		final JFreeChart result = ChartFactory.createTimeSeriesChart(
 				"Graph Plot", "", "", dataset, true, true, true);
@@ -63,7 +71,12 @@ public class ClientPlotGraph extends JFrame {
 		return result;
 	}
 
-	// plots the graphs to the chart panel
+	/**
+	 * plots the graphs to the chart panel.
+	 *
+	 * @param channels - the number of channels
+	 * @param dataMap - the collection of channels and their numbers
+	 */
 	public void plotGraph(int channels, Map<Integer, List<Integer>> dataMap) {
 		if(!dataMap.isEmpty())
 		{
