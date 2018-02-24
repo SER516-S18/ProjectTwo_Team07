@@ -27,6 +27,8 @@ public class ServerUI {
 	private JButton startStopBtn;
 	private boolean serverActiveFlag;
 	ServerConnection serverConnection;
+	ServerStatus plotPanel = new ServerStatus();
+
 
 	/**
 	 * Create the application.
@@ -88,7 +90,7 @@ public class ServerUI {
 		HighestTextField = new JTextField();
 		HighestTextField.setBorder(new LineBorder(Color.BLUE));
 		HighestTextField.setHorizontalAlignment(SwingConstants.CENTER);
-		HighestTextField.setText("1024");
+		HighestTextField.setText("");
 		HighestTextField.setBackground(new Color(135, 206, 250));
 		HighestTextField.setBounds(672, 16, 132, 53);
 		controlPanel.add(HighestTextField);
@@ -108,7 +110,7 @@ public class ServerUI {
 		LowestValueText = new JTextField();
 		LowestValueText.setBorder(new LineBorder(Color.BLUE));
 		LowestValueText.setBackground(Color.PINK);
-		LowestValueText.setText("0");
+		LowestValueText.setText("");
 		LowestValueText.setHorizontalAlignment(SwingConstants.CENTER);
 		LowestValueText.setBounds(672, 105, 132, 63);
 		controlPanel.add(LowestValueText);
@@ -133,7 +135,6 @@ public class ServerUI {
 		controlPanel.add(frequencyValueText);
 		frequencyValueText.setColumns(10);
 		
-		JPanel plotPanel = new JPanel();
 		plotPanel.setBorder(new LineBorder(Color.BLUE));
 		plotPanel.setBackground(Color.PINK);
 		plotPanel.setBounds(26, 16, 457, 324);
@@ -160,20 +161,36 @@ public class ServerUI {
 	*/
 
 	private void startStopBtnClick(java.awt.event.ActionEvent evt){
+		int maxValue = 1024;
+		int minValue =0;
 		if(!serverActiveFlag){
-			serverActiveFlag = true;
 			try{
-				serverConnection.start();
-				serverConnection.setFrequency(5);
-				serverConnection.setMax(1024);
-				serverConnection.setMin(0);
+				if(HighestTextField.getText().equals(""))
+				{
+					ServerConsole.setErrorMessage("Please set max value..");
+				}else {
+					maxValue = Integer.parseInt(HighestTextField.getText());
+					if (LowestValueText.getText().equals("")) {
+						ServerConsole.setErrorMessage("Please set min value..");
+					} else {
+						minValue = Integer.parseInt(LowestValueText.getText());
+						serverConnection.start();
+						serverConnection.setFrequency(5);
+						serverActiveFlag = true;
+						startStopBtn.setText("Stop");
+						plotPanel.startBlinking();
+						ServerConsole.setMessage("Server started.");
+					}
+				}
+				serverConnection.setMax(maxValue);
+				serverConnection.setMin(minValue);
+
 			}catch (Exception e){
 				ServerConsole.setErrorMessage(e.getMessage());
 			}
-			ServerConsole.setMessage("Server started.");
-			startStopBtn.setText("Stop");
 		}
 		else{
+			plotPanel.stopBlinking();
 			serverActiveFlag = false;
 			serverConnection.stop();
 			ServerConsole.setMessage("Server stopped.");
