@@ -70,7 +70,7 @@ public class ClientConnection {
 		return clientData.getAverage();
 	}
 
-	public void start(int channels) {
+	public boolean start(int channels) {
 		if(!client.isConnected()) {
 			client.start();
 
@@ -78,13 +78,17 @@ public class ClientConnection {
 				client.connect(Constants.TIMEOUT, Constants.HOST, Constants.TCP_PORT);
 			} catch (IOException e) {
 				System.out.println("Cannot connect, Server is not up.");
+				return false;
 			}
 
 			Register.register(client);
+			setListener(channels);
+
 			//Called to render the initial graph
 			initGraph(channels);
-			setListener(channels);
+			return true;
 		}
+		return false;
 	}
 
 	// ends client session

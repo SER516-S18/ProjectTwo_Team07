@@ -157,23 +157,19 @@ public class ServerUI {
 			serverActiveFlag = true;
 			try{
 				serverConnection.start();
-				serverConnection.setFrequency(3);
-				serverConnection.setMax(100);
-				serverConnection.setMin(2);
+				serverConnection.setFrequency(5);
+				serverConnection.setMax(1024);
+				serverConnection.setMin(0);
 			}catch (Exception e){
 				ServerConsole.setErrorMessage(e.getMessage());
 			}
-			//ServerStatus.startBlinking();
-			ServerStatus.startMessage();
-			ServerConsole.setMessage("Starting server...");
+			ServerConsole.setMessage("Server started.");
 			startStopBtn.setText("Stop");
 		}
 		else{
 			serverActiveFlag = false;
 			serverConnection.stop();
-			//ServerStatus.stopBlinking();
-			ServerConsole.setMessage("Stopping server...");
-			serverConnection.stop();
+			ServerConsole.setMessage("Server stopped.");
 			startStopBtn.setText("Start");
 		}
 	}
